@@ -21,6 +21,22 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  font-size: 62.5%; // Usually about 10px, so it is easy to calculate.
+}
+
+body {
+  font-size: 1.8rem;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
 .theme-light {
   --bg-background-primary: white;
   --bg-background-secondary: #f7fafc;

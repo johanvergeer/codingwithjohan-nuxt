@@ -6,8 +6,6 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   color: #24292e;
-  line-height: 1.5;
-  font-size: 20px;
   word-wrap: break-word;
 
   &::before {
@@ -52,32 +50,6 @@
     line-height: 1.25;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-  }
-
-  h1 {
-    font-size: 2em;
-    margin: .67em 0;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
-
-  h3 {
-    font-size: 1.25em;
-  }
-
-  h4 {
-    font-size: 1em;
-  }
-
-  h5 {
-    font-size: .875em;
-  }
-
-  h6 {
-    font-size: .85em;
-    color: #6a737d;
   }
 
   /******************************
@@ -394,7 +366,6 @@
 
   code, kbd, pre {
     font-family: monospace;
-    font-size: 1em;
   }
 
   [type='checkbox'] {
@@ -502,7 +473,6 @@
     font-family: monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier;
     background-color: rgba(27, 31, 35, 0.05);
     border-radius: 3px;
-    font-size: 85%;
     margin: 0;
     padding: .2em .4em;
   }
@@ -522,7 +492,7 @@
     code {
       background: transparent;
       border: 0;
-      font-size: 100%;
+      font-size: 0.9em;
       margin: 0;
       padding: 0;
       white-space: pre;

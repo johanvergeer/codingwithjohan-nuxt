@@ -1,12 +1,12 @@
 <template>
   <div class="container-inner mx-auto py-16">
-    <h1 class="text-4xl font-bold">Latest Posts:</h1>
+    <h1 class="font-bold">Latest Posts:</h1>
     <div
       v-for="article in articles"
       :key="article.slug"
       class="post border-gray-400 border-b mb-12"
     >
-      <h2 class="text-3xl font-bold">
+      <h2 class="font-bold">
         <nuxt-link
           :to="{ name: 'blog-slug', params: { slug: article.slug } }"
           class="text-copy-primary"
@@ -20,7 +20,7 @@
         <reading-time :article="article" />
       </div>
 
-      <div class="text-lg mb-4">
+      <div class="mb-4">
         {{ article.description }}
       </div>
 
