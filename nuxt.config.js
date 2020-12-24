@@ -81,6 +81,9 @@ export default {
         'remark-external-links',
         'remark-footnotes',
       ],
+      prism: {
+        theme: 'prism-themes/themes/prism-material-oceanic.css'
+      },
     },
   },
 
