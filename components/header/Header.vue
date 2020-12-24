@@ -4,16 +4,14 @@
       class="container mx-auto flex flex-wrap justify-between items-center py-8"
     >
       <div>
-        <NuxtLink to="/">
+        <nuxt-link to="/">
           <img
             src="~assets/img/logo-100.png"
             class="inline w-12"
             alt="Coding with Johan logo"
           />
-          <p class="inline text-copy-primary text-xl ml-4">
-            Coding with Johan
-          </p>
-        </NuxtLink>
+          <p class="inline text-copy-primary text-xl ml-4">Coding with Johan</p>
+        </nuxt-link>
       </div>
       <div class="block lg:hidden">
         <!--          <button @click="toggle"-->
@@ -27,9 +25,11 @@
         class="top-menu uppercase tracking-wide font-bold w-full block flex-grow lg:space-x-8 space-y-6 lg:space-y-0 lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0"
       >
         <li class="mb-6 lg:mb-0">
+          <!-- TODO: search box -->
           <!--            <search-input />-->
         </li>
         <li>
+          <!-- TODO: theme switcher-->
           <!--            <theme-switcher :theme="theme" @themeChanged="updateTheme" />-->
         </li>
         <li>
