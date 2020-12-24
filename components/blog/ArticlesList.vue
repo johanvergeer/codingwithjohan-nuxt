@@ -14,11 +14,7 @@
           {{ article.title }}
         </nuxt-link>
       </h2>
-      <div class="text-copy-secondary mb-4 text-sm">
-        <span>{{ article.createdAt | formatDate }}</span>
-        <span> &middot; </span>
-        <reading-time :article="article" />
-      </div>
+      <article-meta :article="article" />
 
       <div class="mb-4">
         {{ article.description }}
@@ -40,8 +36,9 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Article } from '~/types/Article'
 import ReadingTime from '~/components/blog/ReadingTime.vue'
+import ArticleMeta from "~/components/blog/ArticleMeta.vue";
 @Component({
-  components: { ReadingTime },
+  components: { ArticleMeta, ReadingTime },
 })
 export default class ArticlesList extends Vue {
   @Prop() private articles?: [Article]
