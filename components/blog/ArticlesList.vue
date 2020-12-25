@@ -1,6 +1,5 @@
 <template>
-  <div class="container-inner mx-auto py-16">
-    <h1 class="font-bold">Latest Posts:</h1>
+  <div>
     <div
       v-for="article in articles"
       :key="article.slug"
@@ -36,7 +35,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Article } from '~/types/Article'
 import ReadingTime from '~/components/blog/ReadingTime.vue'
-import ArticleMeta from "~/components/blog/ArticleMeta.vue";
+import ArticleMeta from '~/components/blog/ArticleMeta.vue'
 @Component({
   components: { ArticleMeta, ReadingTime },
 })

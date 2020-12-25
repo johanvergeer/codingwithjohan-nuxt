@@ -29,7 +29,11 @@
         </div>
       </div>
     </div>
-    <articles-list :articles="articles" />
+
+    <div class="container-inner mx-auto py-16">
+      <h1 class="font-bold">Latest Posts:</h1>
+      <articles-list :articles="articles" />
+    </div>
   </div>
 </template>
 
