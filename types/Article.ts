@@ -4,4 +4,5 @@ export interface Article {
   description: string
   createdAt: string
   body: string
+  featureImage?: string
 }
