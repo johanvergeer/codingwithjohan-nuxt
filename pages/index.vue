@@ -3,34 +3,20 @@
     <div
       class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-16"
     >
-      <div class="text-4xl font-bold w-full sm:w-5/5 text-center sm:text-left">
+      <div class="text-6xl font-bold w-full sm:w-5/5 text-center sm:text-left">
         <div class="leading-tight">Coding with Johan</div>
         <div class="text-blue-700 leading-tight">Passion for Code</div>
       </div>
       <div class="mt-8 sm:mt-0 w-full">
-        <!--      <g-image src="~/img/illustrations/programming.png" alt="programming" class="mx-auto sm:mx-0"/>-->
+        <img
+          src="~/assets/img/illustrations/programming.png"
+          alt="programming"
+          class="mx-auto sm:mx-0"
+        />
       </div>
     </div>
 
-    <div class="container-inner mx-auto">
-      <p class="text-lg sm:text-xl">
-        Hi, my name is Johan. I'm a full stack software engineer and code
-        enthusiast. I'm a fan of sharing knowledge, learning a little bit
-        everyday and teaching that knowledge to others. On my day job I work
-        within agile teams to build applications using Python.
-      </p>
-
-      <div class="flex justify-between items-center py-6">
-        <div class="w-full sm:w-1/2 px-8 py-8 sm:py-0">
-          <!--        <g-image src="~/img/illustrations/teaching.png" alt="source-code"/>-->
-        </div>
-        <div class="w-1/2 px-8 hidden sm:flex justify-end">
-          <!--        <g-image src="~/img/illustrations/source-code.png" alt="source-code"/>-->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-inner mx-auto py-16">
+    <div class="container-inner mx-auto py-16 border-gray-300 border-t mb-12">
       <h1 class="font-bold">Latest Posts:</h1>
       <articles-list :articles="articles" />
     </div>
