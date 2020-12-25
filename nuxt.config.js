@@ -82,7 +82,7 @@ export default {
         'remark-footnotes',
       ],
       prism: {
-        theme: 'prism-themes/themes/prism-material-oceanic.css'
+        theme: 'prism-themes/themes/prism-material-oceanic.css',
       },
     },
   },
