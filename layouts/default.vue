@@ -2,21 +2,21 @@
   <div
     class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen"
   >
-    <Header />
+    <site-header />
 
     <div class="flex-grow">
       <Nuxt />
     </div>
 
-    <Footer />
+    <site-footer />
   </div>
 </template>
 
 <script>
-import Footer from '~/components/footer/Footer'
-import Header from '~/components/header/Header'
+import SiteFooter from '@/components/footer/SiteFooter'
+import SiteHeader from '@/components/header/SiteHeader'
 export default {
-  components: { Header, Footer },
+  components: { SiteHeader, SiteFooter },
 }
 </script>
 
