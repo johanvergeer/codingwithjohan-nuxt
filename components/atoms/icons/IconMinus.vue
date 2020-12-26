@@ -1,9 +1,7 @@
 <template>
   <svg
     focusable="false"
-    data-prefix="fas"
-    data-icon="minus-circle"
-    class="h-10 w-10"
+    :class="[`h-${size}`, `w-${size}`]"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
   >
@@ -13,3 +11,11 @@
     ></path>
   </svg>
 </template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+@Component
+export default class IconMinus extends Vue {
+  @Prop({ default: 8 }) private size?: number
+}
+</script>

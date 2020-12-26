@@ -10,13 +10,13 @@
         :class="[columns > 1 ? '' : 'procon-list-mb']"
       >
         <li v-for="pro in pros" class="flex">
-          <div class="mr-5"><icon-plus /></div>
+          <div class="mr-5 pt-2"><icon-plus /></div>
           <div>{{ pro }}</div>
         </li>
       </ul>
       <ul class="procon list-none list-outside">
         <li v-for="con in cons" class="flex">
-          <div class="mr-5"><icon-minus /></div>
+          <div class="mr-5 pt-2"><icon-minus /></div>
           <div>{{ con }}</div>
         </li>
       </ul>
