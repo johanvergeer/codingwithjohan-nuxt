@@ -10,7 +10,9 @@
             class="inline w-24"
             alt="Coding with Johan logo"
           />
-          <p class="inline text-copy-primary text-4xl ml-4">Coding with Johan</p>
+          <p class="inline text-copy-primary text-4xl ml-4">
+            Coding with Johan
+          </p>
         </nuxt-link>
       </div>
       <div class="block lg:hidden">
