@@ -37,6 +37,10 @@ h2 {
   font-size: 1.5em;
 }
 
+h3 {
+  font-size: 1.2em;
+}
+
 .theme-light {
   --bg-background-primary: white;
   --bg-background-secondary: #f7fafc;
