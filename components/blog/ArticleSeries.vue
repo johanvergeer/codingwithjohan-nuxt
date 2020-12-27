@@ -12,13 +12,13 @@
     <h1 class="text-5xl">Articles in this series:</h1>
     <ul class="list-disc list-inside">
       <li v-for="article of articlesInSeries" :key="article.slug">
-        <a
+        <nuxt-link
           v-if="article.slug !== currentArticle.slug"
-          :href="`/blog/${article.slug}`"
+          :to="`/blog/${article.slug}`"
           class="font-normal"
         >
           {{ article.title }}
-        </a>
+        </nuxt-link>
         <span v-else>{{ article.title }}</span>
       </li>
     </ul>
