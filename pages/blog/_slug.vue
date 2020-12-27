@@ -11,7 +11,7 @@
         </div>
       </div>
       <feature-image :article="article" class="mb-4" />
-      <!--      <article-series :article="article" />-->
+      <article-series :current-article="article" />
       <div class="markdown-body mb-8">
         <nuxt-content :document="article" />
       </div>
@@ -24,6 +24,7 @@
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticleMeta from '~/components/blog/ArticleMeta.vue'
+import ArticleSeries from '~/components/blog/ArticleSeries.vue'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
 import ArticleSources from '~/components/blog/ArticleSources.vue'
 import ArticleTags from '~/components/blog/ArticleTags.vue'
@@ -31,6 +32,7 @@ import FeatureImage from '~/components/blog/FeatureImage.vue'
 
 @Component({
   components: {
+    ArticleSeries,
     ArticleMeta,
     ArticleTags,
     FeatureImage,
