@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
+import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { IContentDocument } from '~/types/content'
 
 @Component
 export default class ReadingTime extends Vue {
