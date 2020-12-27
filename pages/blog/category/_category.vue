@@ -2,6 +2,10 @@
   <div
     class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-16"
   >
+    <p v-if="$fetchState.pending">
+      Loading articles for category {{ $route.params.category }}...
+    </p>
+    <p v-else-if="$fetchState.error">Error while loading the articles!</p>
     <div class="container-inner mx-auto py-16">
       <h1 class="border-gray-700 border-b mb-12">
         Category: {{ articles[0].category }}
@@ -11,19 +15,26 @@
   </div>
 </template>
 
-<script>
-import ArticlesList from '~/components/blog/ArticlesList'
+<script lang="ts">
+import { IContentDocument } from '@nuxt/content/types/content'
+import { Component, Vue } from 'nuxt-property-decorator'
+import ArticlesList from '~/components/blog/ArticlesList.vue'
 
-export default {
+@Component({
   components: { ArticlesList },
-  async asyncData({ $content, params }) {
-    const articles = await $content('blog', params.slug)
-      .where({ category: { $regex: [params.category, 'i'] } })
+})
+export default class Tag extends Vue {
+  private articles: IContentDocument | IContentDocument[] = []
+
+  async fetch() {
+    this.articles = await this.$nuxt
+      .$content('blog')
+      .where({ category: { $regex: [this.$route.params.category, 'i'] } })
       .only(['title', 'slug', 'description', 'createdAt', 'body', 'category'])
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    return { articles }
-  },
+    if (this.articles.length < 1) return this.$nuxt.context.redirect('/404')
+  }
 }
 </script>

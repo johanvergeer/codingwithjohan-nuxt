@@ -18,23 +18,30 @@
 
     <div class="container-inner mx-auto py-16 border-gray-300 border-t mb-12">
       <h1 class="font-bold">Latest Posts:</h1>
-      <articles-list :articles="articles" />
+      <p v-if="$fetchState.pending">Loading articles...</p>
+      <p v-else-if="$fetchState.error">Error while loading articles!</p>
+      <articles-list v-else :articles="articles" />
     </div>
   </div>
 </template>
 
-<script>
-import ArticlesList from '~/components/blog/ArticlesList'
+<script lang="ts">
+import { IContentDocument } from '@nuxt/content/types/content'
+import { Component, Vue } from 'nuxt-property-decorator'
+import ArticlesList from '~/components/blog/ArticlesList.vue'
 
-export default {
+@Component({
   components: { ArticlesList },
-  async asyncData({ $content, params }) {
-    const articles = await $content('blog', params.slug)
+})
+export default class Index extends Vue {
+  private articles: IContentDocument | IContentDocument[] = []
+
+  async fetch() {
+    this.articles = await this.$nuxt
+      .$content('blog')
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'desc')
       .fetch()
-
-    return { articles }
-  },
+  }
 }
 </script>

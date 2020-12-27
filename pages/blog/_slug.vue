@@ -1,35 +1,53 @@
 <template>
   <div class="container-inner mx-auto my-16">
-    <h1 class="text-8xl font-bold leading-tight">{{ article.title }}</h1>
-    <div class="flex justify-between mt-5">
-      <article-meta :article="article" />
-      <div class="flex mb-8 text-xl">
-        <article-tags :article="article" />
+    <p v-if="$fetchState.pending">Loading article...</p>
+    <p v-else-if="$fetchState.error">Error while loading the article!</p>
+    <div v-else>
+      <h1 class="text-8xl font-bold leading-tight">{{ article.title }}</h1>
+      <div class="flex justify-between mt-5">
+        <article-meta :article="article" />
+        <div class="flex mb-8 text-xl">
+          <article-tags :article="article" />
+        </div>
       </div>
+      <feature-image :article="article" class="mb-4" />
+      <article-series :article="article" />
+      <div class="markdown-body mb-8">
+        <nuxt-content :document="article" />
+      </div>
+      <article-sources :article="article" />
     </div>
-    <feature-image :article="article" class="mb-4" />
-    <div class="markdown-body mb-8">
-      <nuxt-content :document="article" />
-    </div>
-    <article-sources :article="article" />
   </div>
 </template>
 
-<script>
-import FeatureImage from '@/components/blog/FeatureImage'
-import ArticleTags from '@/components/blog/ArticleTags'
-import ArticleSources from '@/components/blog/ArticleSources'
-import ArticleMeta from '~/components/blog/ArticleMeta'
-import copyCodeBlock from '~/mixins/copyCodeBlock'
+<script lang="ts">
+import { IContentDocument } from '@nuxt/content/types/content'
+import { Component, Vue } from 'nuxt-property-decorator'
+import ArticleMeta from '~/components/blog/ArticleMeta.vue'
+import ArticleSeries from '~/components/blog/ArticleSeries.vue'
+import ArticlesList from '~/components/blog/ArticlesList.vue'
+import ArticleSources from '~/components/blog/ArticleSources.vue'
+import ArticleTags from '~/components/blog/ArticleTags.vue'
+import FeatureImage from '~/components/blog/FeatureImage.vue'
 
-export default {
-  components: { ArticleSources, ArticleTags, FeatureImage, ArticleMeta },
-  mixins: [copyCodeBlock],
-  async asyncData({ $content, params }) {
-    const article = await $content('blog', params.slug).fetch()
-
-    return { article }
+@Component({
+  components: {
+    ArticleMeta,
+    ArticleTags,
+    FeatureImage,
+    ArticleSeries,
+    ArticleSources,
+    ArticlesList,
   },
+})
+export default class Slug extends Vue {
+  private article: IContentDocument | IContentDocument[] = []
+
+  async fetch() {
+    this.article = await this.$nuxt
+      .$content('blog', this.$route.params.slug)
+      .fetch()
+  }
 }
 </script>
 

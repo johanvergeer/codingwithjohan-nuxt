@@ -12,12 +12,15 @@
   </div>
 </template>
 
-<script>
-import SiteFooter from '@/components/footer/SiteFooter'
-import SiteHeader from '@/components/header/SiteHeader'
-export default {
-  components: { SiteHeader, SiteFooter },
-}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import SiteFooter from '../components/footer/SiteFooter.vue'
+import SiteHeader from '../components/header/SiteHeader.vue'
+
+@Component({
+  components: { SiteFooter, SiteHeader },
+})
+export default class Default extends Vue {}
 </script>
 
 <style lang="scss">

@@ -5,7 +5,7 @@
     <p v-if="$fetchState.pending">
       Loading articles for tag {{ $route.params.tag }}...
     </p>
-    <p v-else-if="$fetchState.error">Error while loading the tags!</p>
+    <p v-else-if="$fetchState.error">Error while loading the articles!</p>
     <div v-else class="container-inner mx-auto py-16">
       <h1 class="border-gray-700 border-b mb-12">
         Tag: {{ $route.params.tag }}
@@ -40,7 +40,7 @@ export default class Tag extends Vue {
 
   async fetch() {
     this.articles = await this.$nuxt
-      .$content('blog', this.$route.params.slug)
+      .$content('blog')
       .where({ tags: { $contains: this.$route.params.tag } })
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'asc')
