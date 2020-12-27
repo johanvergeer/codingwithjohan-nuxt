@@ -18,22 +18,9 @@
 <script lang="ts">
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
-import ArticleMeta from '~/components/blog/ArticleMeta.vue'
-import ArticleSeries from '~/components/blog/ArticleSeries.vue'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
-import ArticleSources from '~/components/blog/ArticleSources.vue'
-import ArticleTags from '~/components/blog/ArticleTags.vue'
-import FeatureImage from '~/components/blog/FeatureImage.vue'
-
 @Component({
-  components: {
-    ArticleMeta,
-    ArticleTags,
-    FeatureImage,
-    ArticleSeries,
-    ArticleSources,
-    ArticlesList,
-  },
+  components: { ArticlesList },
 })
 export default class Tag extends Vue {
   private articles: IContentDocument | IContentDocument[] = []
