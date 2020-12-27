@@ -37,11 +37,14 @@ export default class Index extends Vue {
   private articles: IContentDocument | IContentDocument[] = []
 
   async fetch() {
-    this.articles = await this.$nuxt
+    const baseQuery = this.$nuxt
       .$content('blog')
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'desc')
-      .fetch()
+
+    this.articles = this.$nuxt.context.isDev
+      ? await baseQuery.fetch()
+      : await baseQuery.where({ status: { $ne: 'draft' } }).fetch()
   }
 }
 </script>
