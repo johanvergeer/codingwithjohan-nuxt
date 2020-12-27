@@ -10,7 +10,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class ProConList extends Vue {
-  @Prop() private href?: [String]
-  @Prop() private img?: [String]
+  @Prop() private href?: String
+  @Prop() private img?: String
 }
 </script>

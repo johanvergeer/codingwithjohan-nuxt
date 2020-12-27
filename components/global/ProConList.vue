@@ -34,8 +34,8 @@ import IconMinus from '~/components/atoms/icons/IconMinus.vue'
 export default class ProConList extends Vue {
   @Prop({ default: 2 }) private columns?: number
   @Prop({ default: "Pro's and Con's" }) private title?: string
-  @Prop() private pros?: [String]
-  @Prop() private cons?: [String]
+  @Prop() private pros?: String[]
+  @Prop() private cons?: String[]
 }
 </script>
 
