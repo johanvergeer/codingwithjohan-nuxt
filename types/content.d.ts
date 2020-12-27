@@ -12,4 +12,5 @@ export interface IContentDocument extends Record<string, any> {
   featureImage?: string
   sources?: ArticleSource[]
   series?: string
+  tags?: string[]
 }

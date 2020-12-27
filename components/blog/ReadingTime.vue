@@ -4,11 +4,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Article } from '~/types/Article'
+import { IContentDocument } from '~/types/content'
 
 @Component
 export default class ReadingTime extends Vue {
-  @Prop() private article?: Article
+  @Prop() private article?: IContentDocument
 
   readingTime() {
     const contentString = JSON.stringify(this.article?.body)

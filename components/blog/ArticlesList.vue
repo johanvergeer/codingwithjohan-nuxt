@@ -33,13 +33,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Article } from '~/types/Article'
 import ReadingTime from '~/components/blog/ReadingTime.vue'
 import ArticleMeta from '~/components/blog/ArticleMeta.vue'
+import { IContentDocument } from '~/types/content'
+
 @Component({
   components: { ArticleMeta, ReadingTime },
 })
 export default class ArticlesList extends Vue {
-  @Prop() private articles?: [Article]
+  @Prop() private articles?: IContentDocument[]
 }
 </script>
