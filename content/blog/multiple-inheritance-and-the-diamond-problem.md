@@ -1,7 +1,7 @@
 ---
 title: Multiple Inheritance and the Diamond Problem
 category: Python
-date: 2020-01-17T16:56:43.451Z    
+createdAt: 2020-01-17T16:56:43.451Z    
 featureImage: /blog/multiple-inheritance-and-the-diamond-problem/feature-image.png
 tags:
   - Python

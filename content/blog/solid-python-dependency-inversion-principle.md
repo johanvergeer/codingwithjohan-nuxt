@@ -1,8 +1,9 @@
 ---
 title: Dependency Inversion Principle with Python
 category: Python
-date: 2020-01-24
+createdAt: 2020-01-24
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation principle']
+series: solid-python
 sources:
 ---
 

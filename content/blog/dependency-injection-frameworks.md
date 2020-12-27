@@ -2,7 +2,7 @@
 title: Python Dependency Injection Frameworks
 slug: dependency-injection-frameworks
 category: Python
-date: 2020-01-26
+createdAt: 2020-01-26
 tags: ['Python', 'Dependency Injection']
 sources:
   - title: Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler,
