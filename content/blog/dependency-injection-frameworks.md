@@ -5,11 +5,11 @@ category: Python
 createdAt: 2020-01-26
 tags: ['Python', 'Dependency Injection']
 sources:
-  - title: Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler,
+  - title: Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler
     url: https://martinfowler.com/articles/injection.html#InversionOfControl
-  - title: Dependency Injection by Jakob Jenkov,
+  - title: Dependency Injection by Jakob Jenkov
     url: http://tutorials.jenkov.com/dependency-injection/index.html
-  - title: Dependency Injection on Wikipedia,
+  - title: Dependency Injection on Wikipedia
     url: https://en.wikipedia.org/wiki/Dependency_injection
 dependencyInjectorPros:
   - Very flexible
