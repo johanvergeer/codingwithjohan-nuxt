@@ -1,10 +1,15 @@
+/**
+ * Represents a source (i.e. credit / more info) for an article.
+ */
 interface ArticleSource {
   title: string
   url: string
 }
 
-// Use interface merging to extend IContentDocument from @nuxt/content/types/content
-// https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces
+/**
+ * Use [interface merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces)
+ * to extend @nuxt/content/types/content.d.ts:IContentDocument
+ */
 export interface IContentDocument extends Record<string, any> {
   title: string
   description: string
@@ -13,4 +18,5 @@ export interface IContentDocument extends Record<string, any> {
   sources?: ArticleSource[]
   series?: string
   tags?: string[]
+  status?: 'draft' | 'published' | string
 }
