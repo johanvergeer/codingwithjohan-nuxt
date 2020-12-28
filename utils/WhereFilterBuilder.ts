@@ -22,14 +22,14 @@ export default class WhereFilterBuilder {
     this.vue = vue
 
     if (excludeDraftsInProductionMode) {
-      this._addStatusIfProductionMode()
+      this._withStatusNotDraftIfInProductionMode()
     }
   }
 
   /**
    * posts with status draft should only be displayed when running in dev mode
    */
-  _addStatusIfProductionMode(): void {
+  _withStatusNotDraftIfInProductionMode(): void {
     if (!this.vue.$nuxt.context.isDev) {
       this.whereStatement.status = { $ne: 'draft' }
     }
@@ -39,7 +39,7 @@ export default class WhereFilterBuilder {
    * only include posts that belong to the given series
    * @param series name of the series to be included
    */
-  addSeries(series: string): WhereFilterBuilder {
+  withSeries(series: string): WhereFilterBuilder {
     this.whereStatement.series = series
     return this
   }
@@ -48,7 +48,7 @@ export default class WhereFilterBuilder {
    * onlu include posts that contain the given tag
    * @param tag name of the tag that are used by posts that should be included
    */
-  addTagsContain(tag: string): WhereFilterBuilder {
+  withTagsContaining(tag: string): WhereFilterBuilder {
     this.whereStatement.tags = { $contains: tag }
     return this
   }

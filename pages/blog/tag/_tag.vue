@@ -31,7 +31,7 @@ export default class Tag extends Vue {
       .$content('blog')
       .where(
         new WhereFilterBuilder(this)
-          .addTagsContain(this.$route.params.tag)
+          .withTagsContaining(this.$route.params.tag)
           .build()
       )
       .only(['title', 'slug', 'description', 'createdAt', 'body'])

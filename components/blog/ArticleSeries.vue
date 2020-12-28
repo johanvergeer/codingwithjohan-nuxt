@@ -42,7 +42,7 @@ export default class ArticleSeries extends Vue {
       .$content('blog')
       .where(
         new WhereFilterBuilder(this.$nuxt)
-          .addSeries(this.currentArticle?.series)
+          .withSeries(this.currentArticle?.series)
           .build()
       )
       .sortBy('createdAt', 'asc')
