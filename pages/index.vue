@@ -29,6 +29,7 @@
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
+import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component({
   components: { ArticlesList },
@@ -37,14 +38,12 @@ export default class Index extends Vue {
   private articles: IContentDocument | IContentDocument[] = []
 
   async fetch() {
-    const baseQuery = this.$nuxt
+    this.articles = await this.$nuxt
       .$content('blog')
+      .where(new WhereFilterBuilder(this.$nuxt).build())
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'desc')
-
-    this.articles = this.$nuxt.context.isDev
-      ? await baseQuery.fetch()
-      : await baseQuery.where({ status: { $ne: 'draft' } }).fetch()
+      .fetch()
   }
 }
 </script>

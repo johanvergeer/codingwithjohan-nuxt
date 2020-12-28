@@ -28,6 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import { IContentDocument } from '@nuxt/content/types/content'
+import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component
 export default class ArticleSeries extends Vue {
@@ -39,7 +40,11 @@ export default class ArticleSeries extends Vue {
 
     this.articlesInSeries = await this.$nuxt
       .$content('blog')
-      .where({ series: this.currentArticle?.series })
+      .where(
+        new WhereFilterBuilder(this.$nuxt)
+          .addSeries(this.currentArticle?.series)
+          .build()
+      )
       .sortBy('createdAt', 'asc')
       .fetch()
   }

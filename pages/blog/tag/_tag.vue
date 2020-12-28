@@ -19,6 +19,7 @@
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
+import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 @Component({
   components: { ArticlesList },
 })
@@ -26,15 +27,16 @@ export default class Tag extends Vue {
   private articles: IContentDocument | IContentDocument[] = []
 
   async fetch() {
-    const baseQuery = await this.$nuxt
+    this.articles = await this.$nuxt
       .$content('blog')
-      .where({ tags: { $contains: this.$route.params.tag } })
+      .where(
+        new WhereFilterBuilder(this)
+          .addTagsContain(this.$route.params.tag)
+          .build()
+      )
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'asc')
-
-    this.articles = this.$nuxt.context.isDev
-      ? await baseQuery.fetch()
-      : await baseQuery.where({ status: { $ne: 'draft' } }).fetch()
+      .fetch()
 
     if (this.articles.length < 1) return this.$nuxt.context.redirect('/404')
   }
