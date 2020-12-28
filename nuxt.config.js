@@ -33,6 +33,19 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'Coding with Johan',
+      },
+      // TODO og:image, og:image:secure_url
+      {
+        hid: 'og:image:alt',
+        property: 'og:image:alt',
+        content: 'Coding with Johan',
+      },
+      /// TODO: twitter:image
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
   },
