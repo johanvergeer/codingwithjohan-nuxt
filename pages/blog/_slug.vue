@@ -21,7 +21,6 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticleMeta from '~/components/blog/ArticleMeta.vue'
 import ArticleSeries from '~/components/blog/ArticleSeries.vue'
@@ -29,6 +28,8 @@ import ArticlesList from '~/components/blog/ArticlesList.vue'
 import ArticleSources from '~/components/blog/ArticleSources.vue'
 import ArticleTags from '~/components/blog/ArticleTags.vue'
 import FeatureImage from '~/components/blog/FeatureImage.vue'
+import { IArticle, IPartialArticle } from '~/types/content'
+import { emptyArticle } from '~/utils/initialisers'
 
 @Component({
   components: {
@@ -41,12 +42,12 @@ import FeatureImage from '~/components/blog/FeatureImage.vue'
   },
 })
 export default class Slug extends Vue {
-  private article: IContentDocument | IContentDocument[] = []
+  private article: IArticle = emptyArticle()
 
   async fetch() {
-    this.article = await this.$nuxt
+    this.article = (await this.$nuxt
       .$content('blog', this.$route.params.slug)
-      .fetch()
+      .fetch<IPartialArticle>()) as IArticle
   }
 }
 </script>

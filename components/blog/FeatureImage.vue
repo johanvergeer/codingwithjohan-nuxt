@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { IHasFeatureImage } from '~/types/content'
 
 @Component
 export default class ReadingTime extends Vue {
-  @Prop() private article?: IContentDocument
+  @Prop() private article?: IHasFeatureImage
 }
 </script>

@@ -16,18 +16,18 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
+import { IArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 @Component({
   components: { ArticlesList },
 })
 export default class Tag extends Vue {
-  private articles: IContentDocument | IContentDocument[] = []
+  private articles: IArticle[] = []
 
   async fetch() {
-    this.articles = await this.$nuxt
+    this.articles = (await this.$nuxt
       .$content('blog')
       .where(
         new WhereFilterBuilder(this)
@@ -36,7 +36,7 @@ export default class Tag extends Vue {
       )
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'asc')
-      .fetch()
+      .fetch()) as IArticle[]
 
     if (this.articles.length < 1) return this.$nuxt.context.redirect('/404')
   }

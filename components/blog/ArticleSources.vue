@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { IHasSources } from '~/types/content'
 
 @Component
 export default class ArticleTags extends Vue {
-  @Prop() private article?: IContentDocument
+  @Prop() private article?: IHasSources
 }
 </script>

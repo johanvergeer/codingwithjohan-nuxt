@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import SiteFooter from '../components/footer/SiteFooter.vue'
 import SiteHeader from '../components/header/SiteHeader.vue'
 

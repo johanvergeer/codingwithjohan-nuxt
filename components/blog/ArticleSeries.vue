@@ -27,17 +27,17 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import { IContentDocument } from '@nuxt/content/types/content'
+import { IHasSeries } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component
 export default class ArticleSeries extends Vue {
-  @Prop() private currentArticle?: IContentDocument
-  private articlesInSeries: IContentDocument | IContentDocument[] = []
+  @Prop() private currentArticle?: IHasSeries
+  private articlesInSeries: IHasSeries[] = []
 
   async fetch() {
     if (this.currentArticle?.series) {
-      this.articlesInSeries = await this.$nuxt
+      this.articlesInSeries = (await this.$nuxt
         .$content('blog')
         .only(['slug', 'title'])
         .where(
@@ -46,7 +46,7 @@ export default class ArticleSeries extends Vue {
             .build()
         )
         .sortBy('createdAt', 'asc')
-        .fetch()
+        .fetch()) as IHasSeries[]
     }
   }
 }

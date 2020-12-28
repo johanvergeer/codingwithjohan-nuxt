@@ -26,24 +26,24 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
+import { IArticle, IPartialArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component({
   components: { ArticlesList },
 })
 export default class Index extends Vue {
-  private articles: IContentDocument | IContentDocument[] = []
+  private articles: IArticle[] = []
 
   async fetch() {
-    this.articles = await this.$nuxt
+    this.articles = (await this.$nuxt
       .$content('blog')
       .where(new WhereFilterBuilder(this.$nuxt).build())
       .only(['title', 'slug', 'description', 'createdAt', 'body'])
       .sortBy('createdAt', 'desc')
-      .fetch()
+      .fetch<IPartialArticle>()) as IArticle[]
   }
 }
 </script>

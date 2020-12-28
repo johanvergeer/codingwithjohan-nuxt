@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { IContentDocument } from '@nuxt/content/types/content'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class ReadingTime extends Vue {

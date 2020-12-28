@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 @Component
 export default class IconMinus extends Vue {
   @Prop({ default: 8 }) private size?: number

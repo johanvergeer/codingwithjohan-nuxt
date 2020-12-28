@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { IArticle } from '~/types/content'
 
 @Component
 export default class ArticleMeta extends Vue {
-  @Prop() private article?: IContentDocument
+  @Prop() private article?: IArticle
 }
 </script>
