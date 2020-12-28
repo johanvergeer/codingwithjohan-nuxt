@@ -49,6 +49,55 @@ export default class Slug extends Vue {
       .$content('blog', this.$route.params.slug)
       .fetch<IPartialArticle>()) as IArticle
   }
+
+  head() {
+    return {
+      title: this.article.title,
+      titleTemplate: '%s - NuxtJS',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.article.description,
+        },
+        // Open Graph
+        { hid: 'og:title', property: 'og:title', content: this.article.title },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.article.description,
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://nuxtjs.org/blog/${this.article.slug}`,
+        },
+        // { hid: 'og:image', property: 'og:image', content: this.socialImage },
+        // Twitter Card
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.article.title,
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: this.article.description,
+        },
+        // {
+        //   hid: 'twitter:image',
+        //   name: 'twitter:image',
+        //   content: this.socialImage,
+        // },
+        {
+          hid: 'twitter:image:',
+          name: 'twitter:image:alt',
+          content: this.article.featureImage ? 'Blog post image' : 'NuxtJS',
+        },
+      ],
+    }
+  }
 }
 </script>
 
