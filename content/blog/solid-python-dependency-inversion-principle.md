@@ -1,5 +1,5 @@
 ---
-title: Dependency Inversion Principle with Python
+title: "SOLID Python part 6: Dependency Inversion Principle"
 category: Python
 createdAt: 2020-01-24
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation principle']
@@ -23,11 +23,9 @@ This article begins with a simple example to explain the Dependency Inversion Pr
 After this simple example we will have a look at something you will encounter with 
 more complex applications and how to overcome them.
 
-## Table of Contents
+# Simple dependency inversion example
 
-## Simple dependency inversion example
-
-### Without Dependency Inversion Principle
+## Without Dependency Inversion Principle
 
 Let's assume we have a class that can print books called `Printer`. Before printing the book, it should be formatted.
 For this we will use a class called `Formatter`, which is used by `Printer`. 
@@ -52,7 +50,7 @@ class Printer:
 This example breaks the DIP because both `Printer` and `Formatter` depend on concretions, not abstractions.
 This means we cannot use another `Formatter` or another type of `Book`.
 
-### Create classes that use DIP
+## Create classes that use DIP
 
 To fix this we have to create some abstractions and inject them wherever they are needed.
 To accomplish this we can use [Protocols](https://mypy.readthedocs.io/en/stable/protocols.html#simple-user-defined-protocols) 
@@ -85,7 +83,7 @@ class A4Formatter(FormatterProtocol):
         return has_content.content # This should obviously contain logic to format to A4 size.
 ```
 
-### Creating the `Printer` class with the abstractions
+## Creating the `Printer` class with the abstractions
 
 Now we can inject the `FormatterProtocol` into the `Printer`
 
@@ -100,7 +98,7 @@ class Printer:
         # Printing the book
 ```
 
-### Printing the book
+## Printing the book
 
 This way we don't have any dependencies on implementations, only on abstractions. 
 So when we want to print a book to A4 we can just use the `A4Formatter` like this:
@@ -117,13 +115,13 @@ printer.print(book)
 And when we want to print the book to another format, we just create another concreate `FormatterProtocol`
 and use it when instantiating the printer
 
-## What about more complex applications?
+# What about more complex applications?
 
 When you start to build more complex applications the approach I described above would mean 
 you have to pass dependencies all the way down the dependency hierarchy. 
 This is something you really need to avoid since it will lead to maintenance hell.
 
-### Dependency injection frameworks
+## Dependency injection frameworks
 
 One way to solve this issue is by using dependency injection frameworks. 
 These frameworks will take care of the dependencies you need at runtime anywhere you need them. 

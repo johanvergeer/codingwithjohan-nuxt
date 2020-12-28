@@ -1,22 +1,19 @@
 ---
-title: Single Responsibility Principle with Python
-slug: solid-single-responsibility-principle
-xref: solid-single-responsibility-principle
-Tags: SOLID,Python,SRP,Single Responsibility Principle
-author: Johan Vergeer
-description: This article explains how to apply the Single Responsibility Principle in Python.
-status: published
+title: "SOLID Python part 2: Single Responsibility Principle"
+category: Python
+createdAt: 2020-01-15
+tags: ['SOLID', 'Python', 'SRP', 'Single Responsibility principle']
+series: solid-python
+sources:
 ---
 
-## Single Responsibility Principle with Python
-
-### What is a responsibility?
+# What is a responsibility?
 
 > In the context of the SRP we define a responsibility as a __"reason for change"__. 
 If you can think of more than one reason to change a class, it has multiple responsibilities
 and thus breaks the SRP.
 
-### Single Responsibility Principle advantages
+# Single Responsibility Principle advantages
 
 Using the _Single Responsibility Principle_ has multiple advantages:
 
@@ -24,7 +21,7 @@ Using the _Single Responsibility Principle_ has multiple advantages:
 - You get reusable code
 - Your code is more testable.
 
-### Single Responsibility Principle example
+# Single Responsibility Principle example
 
 Let's make the _Single Responsibility Principle_ more clear with a simple example.
 
