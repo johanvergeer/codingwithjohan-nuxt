@@ -60,6 +60,45 @@
     line-height: 1.25;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
+
+    &::after {
+      content: ' ';
+      width: 30%;
+      display: block;
+      border-width: 2px;
+      border-color: #1565c0; // blue-800
+      //border-color: rgba(0, 197, 142, var(--border-opacity));
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      border-radius: 0.25rem;
+
+      --border-opacity: 1;
+    }
+  }
+
+  h2 {
+    &::after {
+      border-color: #1e88e5; // blue-600
+    }
+  }
+
+  h3 {
+    &::after {
+      border-color: #42a5f5; // blue-400
+    }
+  }
+
+  h4 {
+    &::after {
+      border-color: #90caf9; // blue-200
+    }
+  }
+
+  h5,
+  h6 {
+    &::after {
+      border-color: #bbdefb; // blue-100
+    }
   }
 
   /******************************
