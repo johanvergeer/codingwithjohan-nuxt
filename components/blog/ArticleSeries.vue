@@ -40,6 +40,7 @@ export default class ArticleSeries extends Vue {
 
     this.articlesInSeries = await this.$nuxt
       .$content('blog')
+      .only(['slug', 'title'])
       .where(
         new WhereFilterBuilder(this.$nuxt)
           .withSeries(this.currentArticle?.series)
