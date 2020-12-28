@@ -6,7 +6,7 @@
     An error occurred while loading other articles in the series :(
   </p>
   <div
-    v-else-if="currentArticle && currentArticle.series"
+    v-else-if="articlesInSeries.length > 0"
     class="border-2 border-gray-200 border-solid rounded pb-5 pl-5 bg-gray-100"
   >
     <h1 class="text-5xl">Articles in this series:</h1>
@@ -33,21 +33,21 @@ import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 @Component
 export default class ArticleSeries extends Vue {
   @Prop() private currentArticle?: IContentDocument
-  private articlesInSeries?: IContentDocument | IContentDocument[]
+  private articlesInSeries: IContentDocument | IContentDocument[] = []
 
   async fetch() {
-    if (!this.currentArticle?.series) return
-
-    this.articlesInSeries = await this.$nuxt
-      .$content('blog')
-      .only(['slug', 'title'])
-      .where(
-        new WhereFilterBuilder(this.$nuxt)
-          .withSeries(this.currentArticle?.series)
-          .build()
-      )
-      .sortBy('createdAt', 'asc')
-      .fetch()
+    if (this.currentArticle?.series) {
+      this.articlesInSeries = await this.$nuxt
+        .$content('blog')
+        .only(['slug', 'title'])
+        .where(
+          new WhereFilterBuilder(this.$nuxt)
+            .withSeries(this.currentArticle?.series)
+            .build()
+        )
+        .sortBy('createdAt', 'asc')
+        .fetch()
+    }
   }
 }
 </script>
