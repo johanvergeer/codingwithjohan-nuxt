@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
-export default class ProConList extends Vue {
+export default class FooterIcon extends Vue {
   @Prop() private href?: String
   @Prop() private img?: String
 }
