@@ -9,13 +9,13 @@
   word-wrap: break-word;
 
   &::before {
-    content: "";
+    content: '';
     display: table;
   }
 
   &::after {
     clear: both;
-    content: "";
+    content: '';
     display: table;
   }
 
@@ -37,7 +37,13 @@
     font-weight: 600;
   }
 
-  blockquote, dl, ol, p, pre, table, ul {
+  blockquote,
+  dl,
+  ol,
+  p,
+  pre,
+  table,
+  ul {
     margin-bottom: 2rem;
     margin-top: 2rem;
   }
@@ -45,7 +51,12 @@
   /******************************
   Headers
   ******************************/
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     line-height: 1.25;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
@@ -54,7 +65,8 @@
   /******************************
   Tables
   ******************************/
-  td, th {
+  td,
+  th {
     padding: 0;
   }
 
@@ -69,7 +81,8 @@
       font-weight: 600;
     }
 
-    td, th {
+    td,
+    th {
       border: 1px solid #dfe2e5;
       padding: 6px 13px;
     }
@@ -87,7 +100,8 @@
   /******************************
   Lists
   ******************************/
-  ol, ul {
+  ol,
+  ul {
     margin-bottom: 0;
     margin-top: 0;
     padding-left: 2em;
@@ -96,12 +110,14 @@
       list-style-type: lower-roman;
     }
 
-    ol, ul {
+    ol,
+    ul {
       margin-bottom: 0;
       margin-top: 0;
     }
 
-    ol ol, ul ol {
+    ol ol,
+    ul ol {
       list-style-type: lower-alpha;
     }
   }
@@ -114,7 +130,7 @@
     }
 
     + li {
-      margin-top: .25em;
+      margin-top: 0.25em;
     }
   }
 
@@ -209,15 +225,18 @@
     color: #6a737d;
   }
 
-  .pl-c1, .pl-s {
+  .pl-c1,
+  .pl-s {
     color: #005cc5;
   }
 
-  .pl-e, .pl-en {
+  .pl-e,
+  .pl-en {
     color: #6f42c1;
   }
 
-  .pl-s .pl-s1, .pl-smi {
+  .pl-s .pl-s1,
+  .pl-smi {
     color: #24292e;
   }
 
@@ -244,12 +263,15 @@
   .pl-sr {
     color: #032f62;
 
-    .pl-cce, .pl-sra, .pl-sre {
+    .pl-cce,
+    .pl-sra,
+    .pl-sre {
       color: #032f62;
     }
   }
 
-  .pl-smw, .pl-v {
+  .pl-smw,
+  .pl-v {
     color: #e36209;
   }
 
@@ -267,7 +289,7 @@
     color: #fafbfc;
 
     &::before {
-      content: "^M";
+      content: '^M';
     }
   }
 
@@ -356,14 +378,15 @@
   }
 
   a {
-    background-color: transparent;
-
-    &:active, &:hover {
+    &:active,
+    &:hover {
       outline-width: 0;
     }
   }
 
-  code, kbd, pre {
+  code,
+  kbd,
+  pre {
     font-family: monospace;
   }
 
@@ -379,7 +402,8 @@
     margin: 0;
     overflow: visible;
 
-    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
       -webkit-appearance: none;
       appearance: none;
       margin: 0;
@@ -437,7 +461,7 @@
   }
 
   blockquote {
-    border-left: .25em solid #30855A;
+    border-left: 0.25em solid #30855a;
     color: #6a737d;
     padding: 0 1em;
     margin: 0;
@@ -469,15 +493,17 @@
   }
 
   code {
-    font-family: monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier;
+    font-family: monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo,
+      Courier;
     background-color: rgba(27, 31, 35, 0.05);
     border-radius: 3px;
     margin: 0;
-    padding: .2em .4em;
+    padding: 0.2em 0.4em;
   }
 
   pre {
-    font-family: monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier;
+    font-family: monospace, SFMono-Regular, Consolas, Liberation Mono, Menlo,
+      Courier;
     margin-bottom: 0;
     margin-top: 0;
     word-wrap: normal;
@@ -521,7 +547,8 @@
   .commit-tease-sha {
     color: #444d56;
     display: inline-block;
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+      monospace;
     font-size: 90%;
   }
 
@@ -543,7 +570,8 @@
     -webkit-user-select: none;
     color: rgba(27, 31, 35, 0.3);
     cursor: pointer;
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+      monospace;
     font-size: 12px;
     line-height: 20px;
     min-width: 50px;
@@ -574,7 +602,8 @@
 
   .blob-code-inner {
     color: #24292e;
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+      monospace;
     font-size: 12px;
     overflow: visible;
     white-space: pre;
@@ -582,7 +611,8 @@
   }
 
   .pl-token {
-    &.active, &:hover {
+    &.active,
+    &:hover {
       background: #ffea7f;
       cursor: pointer;
     }
@@ -595,62 +625,62 @@
   }
 
   .tab-size {
-    &[data-tab-size="1"] {
+    &[data-tab-size='1'] {
       -moz-tab-size: 1;
       tab-size: 1;
     }
 
-    &[data-tab-size="2"] {
+    &[data-tab-size='2'] {
       -moz-tab-size: 2;
       tab-size: 2;
     }
 
-    &[data-tab-size="3"] {
+    &[data-tab-size='3'] {
       -moz-tab-size: 3;
       tab-size: 3;
     }
 
-    &[data-tab-size="4"] {
+    &[data-tab-size='4'] {
       -moz-tab-size: 4;
       tab-size: 4;
     }
 
-    &[data-tab-size="5"] {
+    &[data-tab-size='5'] {
       -moz-tab-size: 5;
       tab-size: 5;
     }
 
-    &[data-tab-size="6"] {
+    &[data-tab-size='6'] {
       -moz-tab-size: 6;
       tab-size: 6;
     }
 
-    &[data-tab-size="7"] {
+    &[data-tab-size='7'] {
       -moz-tab-size: 7;
       tab-size: 7;
     }
 
-    &[data-tab-size="8"] {
+    &[data-tab-size='8'] {
       -moz-tab-size: 8;
       tab-size: 8;
     }
 
-    &[data-tab-size="9"] {
+    &[data-tab-size='9'] {
       -moz-tab-size: 9;
       tab-size: 9;
     }
 
-    &[data-tab-size="10"] {
+    &[data-tab-size='10'] {
       -moz-tab-size: 10;
       tab-size: 10;
     }
 
-    &[data-tab-size="11"] {
+    &[data-tab-size='11'] {
       -moz-tab-size: 11;
       tab-size: 11;
     }
 
-    &[data-tab-size="12"] {
+    &[data-tab-size='12'] {
       -moz-tab-size: 12;
       tab-size: 12;
     }
@@ -664,7 +694,7 @@
     }
 
     input {
-      margin: 0 .2em .25em -1.6em;
+      margin: 0 0.2em 0.25em -1.6em;
       vertical-align: middle;
     }
   }
@@ -673,20 +703,20 @@
     box-sizing: content-box;
     border-bottom: 1px solid #dfe2e5;
     overflow: hidden;
-    background-color: #A0AEC0;
+    background-color: #a0aec0;
     height: 1px;
     margin: 24px 0;
     padding: 0;
     border-bottom-color: #eee;
 
     &::before {
-      content: "";
+      content: '';
       display: table;
     }
 
     &::after {
       clear: both;
-      content: "";
+      content: '';
       display: table;
     }
   }
@@ -695,7 +725,8 @@
   Keystrokes (kbd)
   ******************************/
   kbd {
-    font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+    font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+      monospace;
     background-color: #fafbfc;
     border-radius: 3px;
     color: #444d56;
