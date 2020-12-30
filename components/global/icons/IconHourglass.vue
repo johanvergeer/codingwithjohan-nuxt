@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="[`h-${size}`, `w-${size}`]"
+    :width="size"
     :fill="fill"
     viewBox="0 0 100.4 100.4"
     xmlns="http://www.w3.org/2000/svg"

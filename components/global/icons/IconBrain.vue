@@ -2,8 +2,7 @@
   <svg
     fill="none"
     :stroke="stroke"
-    :class="[`h-${size}`, `w-${size}`]"
-    stroke-miterlimit="10"
+    :width="size"
     stroke-width="2px"
     viewBox="0 0 48 48"
     xmlns="http://www.w3.org/2000/svg"

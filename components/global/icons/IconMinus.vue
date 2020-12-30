@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="[`h-${size}`, `w-${size}`]"
+    :width="size"
     :fill="fill"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
@@ -15,7 +15,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 @Component
 export default class IconMinus extends Vue {
-  @Prop({ default: 8 }) private size?: number
+  @Prop({ default: 20 }) private size?: number
   @Prop({ default: 'red' }) fill?: string
 }
 </script>

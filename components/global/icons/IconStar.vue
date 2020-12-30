@@ -1,7 +1,7 @@
 <template>
   <svg
     viewBox="0 0 20 20"
-    :class="[`h-${size}`, `w-${size}`]"
+    :width="size"
     :stroke="stroke"
     fill="none"
     stroke-linecap="round"
@@ -18,7 +18,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 @Component
 export default class IconStar extends Vue {
-  @Prop({ default: 10 }) private size?: number
+  @Prop({ default: 25 }) private size?: number
   @Prop({ default: 'currentColor' }) stroke?: string
 }
 </script>

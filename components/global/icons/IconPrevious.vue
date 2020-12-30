@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="[`h-${size}`, `w-${size}`]"
+    :width="size"
     viewBox="0 0 500 500"
     xmlns="http://www.w3.org/2000/svg"
     :stroke="stroke"
@@ -24,7 +24,7 @@ import IconBase from '~/components/global/icons/IconBase.vue'
 
 @Component
 export default class IconPrevious extends Mixins(IconBase) {
-  @Prop({ default: 10 }) size?: number
+  @Prop({ default: 25 }) size?: number
   @Prop({ default: 'currentColor' }) stroke?: string
 }
 </script>

@@ -6,25 +6,25 @@
     Error occurred while checking for other articles in the series...
   </div>
   <div v-else-if="document.series" class="md:flex md:justify-between">
-    <div class="md:w-2/5">
+    <div class="md:flex-1">
       <nuxt-link
         v-if="prev"
         :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
         class="flex border border-blue-100 rounded-md items-center p-2 pr-5"
       >
-        <icon-previous size="16" />
+        <icon-previous size="50" class="flex-none" />
         <div class="text-2xl ml-5">{{ prev.title }}</div>
       </nuxt-link>
     </div>
-
-    <div class="md:w-2/5 mt-10 md:mt-0">
+    <div class="md:flex-none md:w-1/12 invisible md:visible"></div>
+    <div class="md:flex-1 mt-10 md:mt-0">
       <nuxt-link
-        v-if="next"
-        :to="{ name: 'blog-slug', params: { slug: next.slug } }"
-        class="flex justify-end border border-blue-100 rounded-md items-center p-2 pl-5"
+        v-if="prev"
+        :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
+        class="flex border border-blue-100 rounded-md items-center p-2 pl-5 justify-end"
       >
         <div class="text-2xl mr-5">{{ next.title }}</div>
-        <icon-next size="16" />
+        <icon-next size="50" class="flex-none" />
       </nuxt-link>
     </div>
   </div>

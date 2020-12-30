@@ -1,6 +1,6 @@
 <template>
   <svg
-    :class="[`h-${size}`, `w-${size}`]"
+    :width="size"
     fill="none"
     stroke-width="2"
     stroke-linecap="round"
