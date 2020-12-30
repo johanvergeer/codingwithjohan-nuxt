@@ -22,12 +22,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, mixins } from 'nuxt-property-decorator'
+import CopyCodeBlock from '~/mixins/CopyCodeBlock.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
 import { emptyArticle } from '~/utils/initialisers'
 
 @Component
-export default class Slug extends Vue {
+export default class Slug extends mixins(CopyCodeBlock) {
   private article: IArticle = emptyArticle()
 
   async fetch() {
