@@ -5,7 +5,7 @@
   <div v-else-if="$fetchState.error">
     Error occurred while checking for other articles in the series...
   </div>
-  <div v-else class="md:flex md:justify-between">
+  <div v-else-if="document.series" class="md:flex md:justify-between">
     <div class="md:w-2/5">
       <nuxt-link
         v-if="prev"
