@@ -9,12 +9,15 @@
     "generate": "nuxt-ts generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
-    "lint": "npm run lint:js && npm run lint:style",
+    "lint:prettier": "prettier --check .",
+    "format:prettier": "prettier --write .",
+    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "test": "jest"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
+    "*.{css,vue,scss}": "stylelint",
+    "*.{css,scss,vue,js,ts,md}": "prettier --check ."
   },
   "husky": {
     "hooks": {
@@ -54,7 +57,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "fibers": "^5.0.0",
-    "husky": "^4.3.0",
+    "husky": "^4.3.6",
     "jest": "^26.5.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
