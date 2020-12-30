@@ -21,6 +21,5 @@ import { Mixins } from 'vue-property-decorator'
 import IconBase from '~/components/global/icons/IconBase.vue'
 
 @Component
-export default class IconBricks extends Mixins(IconBase) {
-}
+export default class IconBricks extends Mixins(IconBase) {}
 </script>

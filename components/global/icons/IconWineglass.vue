@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Component} from 'nuxt-property-decorator'
+import { Component } from 'nuxt-property-decorator'
 import { Mixins } from 'vue-property-decorator'
 import IconBase from '~/components/global/icons/IconBase.vue'
 
