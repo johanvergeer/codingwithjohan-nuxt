@@ -11,7 +11,7 @@
         </div>
       </div>
       <feature-image :article="article" class="mb-4" />
-      <article-series :current-article="article" />
+      <article-series :document="article" />
       <div class="markdown-body mb-8">
         <nuxt-content :document="article" />
       </div>
