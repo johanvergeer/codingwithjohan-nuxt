@@ -6,23 +6,27 @@
     Error occurred while checking for other articles in the series...
   </div>
   <div v-else class="md:flex md:justify-between">
-    <nuxt-link
-      v-if="prev"
-      :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
-      class="flex border border-blue-100 rounded-md items-center p-2 pr-5 md:w-2/5"
-    >
-      <icon-previous size="16" />
-      <div class="text-2xl ml-5">{{ prev.title }}</div>
-    </nuxt-link>
+    <div class="md:w-2/5">
+      <nuxt-link
+        v-if="prev"
+        :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
+        class="flex border border-blue-100 rounded-md items-center p-2 pr-5"
+      >
+        <icon-previous size="16" />
+        <div class="text-2xl ml-5">{{ prev.title }}</div>
+      </nuxt-link>
+    </div>
 
-    <nuxt-link
-      v-if="next"
-      :to="{ name: 'blog-slug', params: { slug: next.slug } }"
-      class="flex justify-end border border-blue-100 rounded-md items-center p-2 pl-5 md:w-2/5 mt-10 md:mt-0"
-    >
-      <div class="text-2xl mr-5">{{ next.title }}</div>
-      <icon-next size="16" />
-    </nuxt-link>
+    <div class="md:w-2/5 mt-10 md:mt-0">
+      <nuxt-link
+        v-if="next"
+        :to="{ name: 'blog-slug', params: { slug: next.slug } }"
+        class="flex justify-end border border-blue-100 rounded-md items-center p-2 pl-5"
+      >
+        <div class="text-2xl mr-5">{{ next.title }}</div>
+        <icon-next size="16" />
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
