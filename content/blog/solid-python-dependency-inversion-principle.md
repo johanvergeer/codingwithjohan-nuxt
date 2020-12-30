@@ -1,5 +1,5 @@
 ---
-title: "SOLID Python part 6: Dependency Inversion Principle"
+title: 'SOLID Python part 6: Dependency Inversion Principle'
 category: Python
 createdAt: 2020-01-24
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation principle']
@@ -7,20 +7,20 @@ series: solid-python
 sources:
 ---
 
-This is the fifth and last article on the SOLID Principles with Python. 
-In this article we will look into the __D__ of __SOLID__ which stands for Dependency Inversion Principle.
+This is the fifth and last article on the SOLID Principles with Python.
+In this article we will look into the **D** of **SOLID** which stands for Dependency Inversion Principle.
 
 <!--more-->
 
 <block-quote author="Robert C. Martin" title="The Dependency Inversion Principle" url="https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf">
 
-* High level modules should not depend upon low level modules. Both should depend upon abstractions.
-* Abstractions should not depend on details. Details should depend on abstractions.
+- High level modules should not depend upon low level modules. Both should depend upon abstractions.
+- Abstractions should not depend on details. Details should depend on abstractions.
 
 </block-quote>
 
-This article begins with a simple example to explain the Dependency Inversion Principle. 
-After this simple example we will have a look at something you will encounter with 
+This article begins with a simple example to explain the Dependency Inversion Principle.
+After this simple example we will have a look at something you will encounter with
 more complex applications and how to overcome them.
 
 # Simple dependency inversion example
@@ -28,7 +28,7 @@ more complex applications and how to overcome them.
 ## Without Dependency Inversion Principle
 
 Let's assume we have a class that can print books called `Printer`. Before printing the book, it should be formatted.
-For this we will use a class called `Formatter`, which is used by `Printer`. 
+For this we will use a class called `Formatter`, which is used by `Printer`.
 
 ```python
 class Book:
@@ -43,7 +43,7 @@ class Printer:
     def print(self, book: Book):
         formatter = Formatter()
         formatted_book = formatter.format(book)
-        ... 
+        ...
         # Printing the book
 ```
 
@@ -53,7 +53,7 @@ This means we cannot use another `Formatter` or another type of `Book`.
 ## Create classes that use DIP
 
 To fix this we have to create some abstractions and inject them wherever they are needed.
-To accomplish this we can use [Protocols](https://mypy.readthedocs.io/en/stable/protocols.html#simple-user-defined-protocols) 
+To accomplish this we can use [Protocols](https://mypy.readthedocs.io/en/stable/protocols.html#simple-user-defined-protocols)
 just like we did with the interface segregation principle.
 
 First we will create a Protocol for classes that contain `content` which will be used to create a `Book`.
@@ -67,10 +67,10 @@ class HasContentProtocol(Protocol):
 class Book(HasContentProtocol):
     def __init__(self, content):
         self.content = content
-``` 
+```
 
 Next we create a formatter Protocol and create a concrete formatter.
-Note the three dots (`...`) in the `format` method of `FormatterProtocol`. 
+Note the three dots (`...`) in the `format` method of `FormatterProtocol`.
 
 ```python
 @dataclass
@@ -94,13 +94,13 @@ class Printer:
 
     def print(self, has_content: HasContentProtocol):
         formatted_book = self.formatter.format(has_content)
-        ... 
+        ...
         # Printing the book
 ```
 
 ## Printing the book
 
-This way we don't have any dependencies on implementations, only on abstractions. 
+This way we don't have any dependencies on implementations, only on abstractions.
 So when we want to print a book to A4 we can just use the `A4Formatter` like this:
 
 ```python
@@ -117,15 +117,15 @@ and use it when instantiating the printer
 
 # What about more complex applications?
 
-When you start to build more complex applications the approach I described above would mean 
-you have to pass dependencies all the way down the dependency hierarchy. 
+When you start to build more complex applications the approach I described above would mean
+you have to pass dependencies all the way down the dependency hierarchy.
 This is something you really need to avoid since it will lead to maintenance hell.
 
 ## Dependency injection frameworks
 
-One way to solve this issue is by using dependency injection frameworks. 
-These frameworks will take care of the dependencies you need at runtime anywhere you need them. 
+One way to solve this issue is by using dependency injection frameworks.
+These frameworks will take care of the dependencies you need at runtime anywhere you need them.
 
-There are several dependency injection frameworks for Python that are still under active maintenance. 
+There are several dependency injection frameworks for Python that are still under active maintenance.
 I wrote an article about [Python Dependency Injection frameworks](/blog/dependency-injection-frameworks)
 which you can use to decide which one is best for your application.

@@ -1,5 +1,5 @@
 ---
-title: "SOLID Python part 4: Liskov Substitution Principle"
+title: 'SOLID Python part 4: Liskov Substitution Principle'
 category: Python
 createdAt: 2020-01-17
 tags: ['SOLID', 'Python', 'LSP', 'Liskov Substitution Principle']
@@ -11,18 +11,18 @@ sources:
 
 > Derived classes must be substitutable for their base classes.
 
-The __Liskov Substitution Principle__ (LSP) was created by Barbara Liskov in 1987:
+The **Liskov Substitution Principle** (LSP) was created by Barbara Liskov in 1987:
 
 > What is wanted here is something like the following substitution property: If
-for each object `o1` of type `S` there is an object `o2` of type `T` such that for all
-programs `P` defined in terms of `T`, the behavior of `P` is unchanged when `o1` is
-substituted for `o2` then `S` is a subtype of `T`. [@Liskov1987]
+> for each object `o1` of type `S` there is an object `o2` of type `T` such that for all
+> programs `P` defined in terms of `T`, the behavior of `P` is unchanged when `o1` is
+> substituted for `o2` then `S` is a subtype of `T`. [@Liskov1987]
 
-This is a whole mouth full, so I will try to explain it with an example. 
+This is a whole mouth full, so I will try to explain it with an example.
 
 ### Liskov Substitution Principle example
 
-In this example we're going to let everyone in Middle Earth dance. 
+In this example we're going to let everyone in Middle Earth dance.
 First we create an abstract base class called `MiddleEarthInhabitant`, after which we create an `Human` and a `Hobbit`
 
 ```python
@@ -46,7 +46,7 @@ class Party:
 
     def que_music(self):
         for guest in self._guests:
-            guest.dance()        
+            guest.dance()
 ```
 
 Now when we want to create an `Orc`, which is also a Middle Earth inhabitant, we hit a problem: Orcs are fighters, not dancers.
@@ -80,8 +80,7 @@ class Party:
 
     def que_music(self):
         for guest in self._guests:
-            guest.dance()        
+            guest.dance()
 ```
 
 Now we can create an `Orc`, which still is a `MiddleEarthInhabitant`, but he doesn't have to dance.
-

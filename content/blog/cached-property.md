@@ -7,8 +7,8 @@ tags: ['Python', 'functools', 'performance']
 sources:
 ---
 
-The `cached_property` decorator can save a lot of computation time in return of some RAM memory. 
-Can this decorator be used anywhere, or should it be used sparingly. Let's find out! 
+The `cached_property` decorator can save a lot of computation time in return of some RAM memory.
+Can this decorator be used anywhere, or should it be used sparingly. Let's find out!
 
 <!--more-->
 
@@ -27,7 +27,6 @@ It doesn't matter if you do not know how this function works. In short:
 - It gets the property value of each instance 10 times
 - It puts all values in a Pandas dataframe, which makes it easier to get the mean of all values
 - It prints the average time it takes to compute the property value the first time, the average time to retrieve the cached value, and the speed gain of using `cached_property`
-
 
 ```python
 class ClassWithProp(Protocol):
@@ -95,14 +94,13 @@ average other runs (cached): 3.258387247721354e-07
 Speed gain: 13.24390243902439
 ```
 
-That is already over 10 times faster than before. 
+That is already over 10 times faster than before.
 To be honest it was surprising to me since it is such a simple computation.
 
 # A more complex computation
 
-Using `@cached_property` on a simple computation, like returning `1`, is nice. 
-Now let's see what happens when it is used on a more complex computation? 
-
+Using `@cached_property` on a simple computation, like returning `1`, is nice.
+Now let's see what happens when it is used on a more complex computation?
 
 ```python
 >>> class AdvancedComputation:
@@ -122,9 +120,9 @@ average other runs: 0.06705078548855253
 Speed gain: 1.105159041839175
 ```
 
-Each run takes a lot longer than before, and there is no speed gain. 
-This was to be expected since the property value is not cached. 
-Now I hope you are in for a surprise because you are about to see the true power of `@cached_property`. 
+Each run takes a lot longer than before, and there is no speed gain.
+This was to be expected since the property value is not cached.
+Now I hope you are in for a surprise because you are about to see the true power of `@cached_property`.
 
 ```python
 >>> class AdvancedComputation:
@@ -145,16 +143,15 @@ Speed gain: 452581.63636363635
 ```
 
 With `@cached_property` retrieving the value is almost half a million times faster. 😲
-I don't know about you, but I think that is awesome. 
-Now imagine the performance gain when you cache values that come from a database or external api.  
- 
+I don't know about you, but I think that is awesome.
+Now imagine the performance gain when you cache values that come from a database or external api.
+
 # When to avoid using `@cached_property`?
 
-Do not use `@cached_property` when there are side effects inside the property, 
+Do not use `@cached_property` when there are side effects inside the property,
 or when the property might return a different value under certain circumstances.
-
 
 # Conclusion
 
-`@cached_propety` provides a huge performance boost when you are dealing with big calculations, 
+`@cached_propety` provides a huge performance boost when you are dealing with big calculations,
 retrieving data from a database or calling an external API. All you have to look out for are side effects and mutable state.

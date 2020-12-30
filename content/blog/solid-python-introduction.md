@@ -1,5 +1,5 @@
 ---
-title: "SOLID Python part 1: Introduction"
+title: 'SOLID Python part 1: Introduction'
 category: Python
 createdAt: 2020-01-14
 tags: ['SOLID', 'Python']
@@ -23,7 +23,7 @@ In this first article we'll have a look at the reason we should apply the SOLID 
 
 # Design Smells
 
-Before we get started with the SOLID principles I would like to start with design smells 
+Before we get started with the SOLID principles I would like to start with design smells
 that will lead problems when we want to maintain, reuse or extend our software.
 
 <block-quote author="Robert C. Martin" title="Agile Software Development, Principles, Patterns, and Practices">
@@ -194,7 +194,6 @@ Well, it helps us to write code that is ...
   </template>
 </layout-two-columns>
 
-
 <layout-two-columns>
   <template #col1>
     <icon-maintenance></icon-maintenance>
@@ -203,7 +202,6 @@ Well, it helps us to write code that is ...
     ... better maintainable
   </template>
 </layout-two-columns>
-
 
 <layout-two-columns>
   <template #col1>

@@ -36,7 +36,7 @@ pinjectCons:
   - Some features require the use of decorators, which couples Pinject to your application
 injectorPros:
   - Uses static type checking to resolve dependencies
-  - Very simple to configure 
+  - Very simple to configure
   - Supports dataclasses
   - Helpers for testing
   - Creates a new object on each call by default ...
@@ -45,7 +45,7 @@ injectorPros:
 injectorCons:
   - It looks like it forces the use of decorators, which couples Injector heavily to your application
 pythonInjectPros:
-  - Uses static type checking to resolve dependencies 
+  - Uses static type checking to resolve dependencies
   - Very simple to configure
   - Integrates with Django
   - Partial injection
@@ -55,15 +55,15 @@ pythonInjectCons:
   - Python Inject is coupled heavily into your application
 ---
 
-Even though the usage of Dependency Injection is not as common in the Python community as it is in the C# or Java communities, 
+Even though the usage of Dependency Injection is not as common in the Python community as it is in the C# or Java communities,
 it is still a very powerful way to implement the [Dependency Inversion Principle](/blog/solid-python-dependency-inversion-principle).
-Thankfully there are several packages available to us that provide us with a dependency injection implementation, 
+Thankfully there are several packages available to us that provide us with a dependency injection implementation,
 which I will discuss in this article.
 
 <!--more-->
 
-Dependency injection is a style of object configuration in which an objects fields and collaborators are set by an external entity. 
-In other words objects are configured by some other object. 
+Dependency injection is a style of object configuration in which an objects fields and collaborators are set by an external entity.
+In other words objects are configured by some other object.
 When you are using Dependency injection an object is no longer responsible for configuring itself.
 This is taken care of by the container instead. This might be a bit abstract so let's start with a simple example:
 
@@ -77,17 +77,17 @@ class EmailClient:
         server = imaplib.IMAP4('localhost', 993)
         server.login(username, password)
         server.select('INBOX')
-    
+
         result, data = server.uid('search', None)
 
         # Process result and data
 ```
 
 In this example we have an `EmailClient` that uses `imaplib` to receive email messages.
-The problem we have here is the fact we hardwired `imaplib.IMAP4` into the email client 
+The problem we have here is the fact we hardwired `imaplib.IMAP4` into the email client
 so we cannot use another protocol like `IMAP_SSL`.
 
-We can solve this with dependency injection. For this we make use of Pythons duck typing. 
+We can solve this with dependency injection. For this we make use of Pythons duck typing.
 First we create a [Protocols](https://mypy.readthedocs.io/en/stable/protocols.html#simple-user-defined-protocols)
 we can use to define what we expect.
 
@@ -124,7 +124,7 @@ client = EmailClient(receiver)
 results = client.receive("codingwithjohan@gmail.com", "mysupersecretpasswd")
 ```
 
-As you can see, in this case we are using the `IMAP4_SSL` instead of just `IMAP` 
+As you can see, in this case we are using the `IMAP4_SSL` instead of just `IMAP`
 without having to change the `EmailClient`.
 
 ## Why would you need a dependency injection framework?
@@ -135,7 +135,7 @@ If you've been researching Dependency Injection frameworks for python, you've no
 
 The position behind this statement is often that you only need Dependency Injection in statically typed languages.
 
-To be honest, you don't really _need_ Dependency Injection in any language, whether it is statically typed or not. 
+To be honest, you don't really _need_ Dependency Injection in any language, whether it is statically typed or not.
 Dependency Injection can make you life a lot easier though when building large applications.
 In my experience monkey patching should be kept to a minimum. I only use it in my tests, for example when I create mocks.
 
@@ -147,15 +147,15 @@ I also did not include any examples because each framework already provides very
 
 ### Dependency Injector
 
-Dependency Injector is a dependency injection microframework for Python created by ETS Labs. 
-It was designed to be a unified and developer-friendly tool that helps implement 
+Dependency Injector is a dependency injection microframework for Python created by ETS Labs.
+It was designed to be a unified and developer-friendly tool that helps implement
 a dependency injection design pattern in a formal, pretty, and Pythonic way.
 
 <pro-con-list :pros="dependencyInjectorPros" :cons="dependencyInjectorCons" title=""></pro-con-list>
 
 ### Pinject
 
-Pinject is a dependency injection container for Python created by Google. 
+Pinject is a dependency injection container for Python created by Google.
 It's primary goal is to help developers assemble objects into graphs in an easy, maintainable way.
 
 <pro-con-list :pros="pinjectPros" :cons="pinjectCons" title=""></pro-con-list>

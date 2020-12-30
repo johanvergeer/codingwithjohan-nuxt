@@ -1,7 +1,7 @@
 ---
 title: Multiple Inheritance and the Diamond Problem
 category: Python
-createdAt: 2020-01-17T16:56:43.451Z    
+createdAt: 2020-01-17T16:56:43.451Z
 featureImage: /blog/multiple-inheritance-and-the-diamond-problem/feature-image.png
 tags:
   - Python
@@ -20,14 +20,14 @@ After this you will learn some multiple inheritance gotchas among which the drea
 
 # Basic class inheritance
 
-Inheritance is a concept you will probably know when you work with an object oriented language. 
+Inheritance is a concept you will probably know when you work with an object oriented language.
 Here is an example:
 
 ```python
 class Parent:
     def __init__(self, x):
         self.x = x
-  
+
     def __str__(self):
         return f"x: {self.x}"
 
@@ -38,7 +38,7 @@ parent = Parent("Will")
 child = Child("Jaden")
 ```
 
-In this example the `Child` class inherits from the `Parent` class. 
+In this example the `Child` class inherits from the `Parent` class.
 When you print the `parent` and `child` to the console you will see their behaviors.
 
 ```python
@@ -48,7 +48,6 @@ x: Will
 >>> print(child)
 x: Jaden
 ```
-
 
 # Introduction to multiple inheritance
 
@@ -74,7 +73,7 @@ class Child(Parent1, Parent2):
         return "Z"
 ```
 
-Easy as that. The child class can inherit from as many base classes as you want. 
+Easy as that. The child class can inherit from as many base classes as you want.
 
 Run this code to see the result:
 
@@ -134,7 +133,7 @@ Here are some things you have to look out for when using multiple inheritance:
 
 ## Abusing multiple inheritance
 
-Multiple inheritance should be looked at like any other design pattern. 
+Multiple inheritance should be looked at like any other design pattern.
 So use it with care and only when applicable. There are often better solutions.
 
 ## Method resolution order
@@ -142,7 +141,7 @@ So use it with care and only when applicable. There are often better solutions.
 Python uses a resolution order to figure out which implementation to use.
 When two or more parent classes have the same methods or attributes they will be resolved from left to right.
 
-In the example below `Child` inherits from `Parent1` and `Parent2` which both have a method called `a(self)`. 
+In the example below `Child` inherits from `Parent1` and `Parent2` which both have a method called `a(self)`.
 
 ```python
 class Parent1:
@@ -167,7 +166,6 @@ class Child(Parent1, Parent2):
 
 Because `Parent1` is used first, his implementation will be called. Run this code to see the result:
 
-
 ```python
 >>> child = Child("Jada", "Will")
 >>> print(child.a())
@@ -185,7 +183,7 @@ You can call `.__mro__` or `.mro()` on a class to figure out the resolution orde
 
 ## The diamond problem
 
-The **diamond problem**, or **deadly diamond of death**, 
+The **diamond problem**, or **deadly diamond of death**,
 occurs when multiple parent classes inherit from the same base class which makes the inheritance graph look like a diamond.
 
 ![Diamond Problem](/blog/multiple-inheritance-and-the-diamond-problem/diamond_inheritance.png)
@@ -223,7 +221,7 @@ class Child(Parent1, Parent2):
         Parent2.__init__(self, y)
 ```
 
-How do you think this will be resolved? Your first thought might be to follow the *left to right* rule, but then you are wrong.
+How do you think this will be resolved? Your first thought might be to follow the _left to right_ rule, but then you are wrong.
 
 ```python
 >>> print(Child.__mro__)
@@ -235,6 +233,6 @@ which might not be what you expected.
 
 # Conclusion
 
-Multiple inheritance is a powerful Python feature. 
+Multiple inheritance is a powerful Python feature.
 Once you know how it works and when to use it you can do amazing things with it.
 But on the other hand it can lead to some major issues you need to be aware of.
