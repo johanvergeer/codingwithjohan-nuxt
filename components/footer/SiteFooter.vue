@@ -20,11 +20,3 @@
     </div>
   </footer>
 </template>
-
-<script>
-import Copyright from '~/components/footer/Copyright'
-import FooterIcon from '~/components/footer/FooterIcon'
-export default {
-  components: { Copyright, FooterIcon },
-}
-</script>

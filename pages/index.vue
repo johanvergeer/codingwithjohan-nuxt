@@ -27,13 +27,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ArticlesList from '~/components/blog/ArticlesList.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
-@Component({
-  components: { ArticlesList },
-})
+@Component
 export default class Index extends Vue {
   private articles: IArticle[] = []
 

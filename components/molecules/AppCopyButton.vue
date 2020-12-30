@@ -7,11 +7,8 @@
 
 <script>
 import Clipboard from 'clipboard'
-import IconClipboardCheck from '~/components/global/icons/IconClipboardCheck'
-import IconClipboardCopy from '~/components/global/icons/IconClipboardCopy'
 
 export default {
-  components: { IconClipboardCopy, IconClipboardCheck },
   data() {
     return {
       state: 'init',

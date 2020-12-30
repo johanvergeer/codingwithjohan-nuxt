@@ -33,13 +33,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import ReadingTime from '~/components/blog/ReadingTime.vue'
-import ArticleMeta from '~/components/blog/ArticleMeta.vue'
 import { IArticle } from '~/types/content'
 
-@Component({
-  components: { ArticleMeta, ReadingTime },
-})
+@Component
 export default class ArticlesList extends Vue {
   @Prop() private articles?: IArticle[]
 }

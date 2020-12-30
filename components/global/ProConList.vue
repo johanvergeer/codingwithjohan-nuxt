@@ -26,11 +26,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import IconPlus from '~/components/global/icons/IconPlus.vue'
-import IconMinus from '~/components/global/icons/IconMinus.vue'
-@Component({
-  components: { IconMinus, IconPlus },
-})
+@Component
 export default class ProConList extends Vue {
   @Prop({ default: 2 }) private columns?: number
   @Prop({ default: "Pro's and Con's" }) private title?: string

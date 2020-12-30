@@ -33,8 +33,6 @@
 <script lang="ts">
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import IconNext from '~/components/global/icons/IconNext.vue'
-import IconPrevious from '~/components/global/icons/IconPrevious.vue'
 import { IHasSeries, IHasTitle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
@@ -43,9 +41,7 @@ interface ITitleAndSlug {
   slug?: string
 }
 
-@Component({
-  components: { IconNext, IconPrevious },
-})
+@Component
 export default class ArticleSeriesPrevNext extends Vue {
   @Prop() private document?: IContentDocument & IHasSeries
   private prev?: ITitleAndSlug = {}

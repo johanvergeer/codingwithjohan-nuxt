@@ -14,12 +14,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import SiteFooter from '../components/footer/SiteFooter.vue'
-import SiteHeader from '../components/header/SiteHeader.vue'
 
-@Component({
-  components: { SiteFooter, SiteHeader },
-})
+@Component
 export default class Default extends Vue {}
 </script>
 

@@ -15,13 +15,7 @@
 </template>
 
 <script>
-import IconInfo from '@/components/global/icons/IconInfo'
-import IconNext from '@/components/global/icons/IconNext'
-import IconStar from '@/components/global/icons/IconStar'
-import IconAlert from '@/components/global/icons/IconAlert'
-
 export default {
-  components: { IconAlert, IconStar, IconNext, IconInfo },
   props: {
     type: {
       type: String,

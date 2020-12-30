@@ -23,27 +23,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ArticleMeta from '~/components/blog/ArticleMeta.vue'
-import ArticleSeries from '~/components/blog/ArticleSeries.vue'
-import ArticleSeriesPrevNext from '~/components/blog/ArticleSeriesPrevNext.vue'
-import ArticlesList from '~/components/blog/ArticlesList.vue'
-import ArticleSources from '~/components/blog/ArticleSources.vue'
-import ArticleTags from '~/components/blog/ArticleTags.vue'
-import FeatureImage from '~/components/blog/FeatureImage.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
 import { emptyArticle } from '~/utils/initialisers'
 
-@Component({
-  components: {
-    ArticleSeriesPrevNext,
-    ArticleSeries,
-    ArticleMeta,
-    ArticleTags,
-    FeatureImage,
-    ArticleSources,
-    ArticlesList,
-  },
-})
+@Component
 export default class Slug extends Vue {
   private article: IArticle = emptyArticle()
 
