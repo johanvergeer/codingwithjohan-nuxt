@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import IconInfo from '@/components/atoms/icons/IconInfo'
-import IconNext from '@/components/atoms/icons/IconNext'
-import IconStar from '@/components/atoms/icons/IconStar'
-import IconAlert from '@/components/atoms/icons/IconAlert'
+import IconInfo from '@/components/global/icons/IconInfo'
+import IconNext from '@/components/global/icons/IconNext'
+import IconStar from '@/components/global/icons/IconStar'
+import IconAlert from '@/components/global/icons/IconAlert'
 
 export default {
   components: { IconAlert, IconStar, IconNext, IconInfo },

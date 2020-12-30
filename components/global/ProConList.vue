@@ -26,8 +26,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import IconPlus from '~/components/atoms/icons/IconPlus.vue'
-import IconMinus from '~/components/atoms/icons/IconMinus.vue'
+import IconPlus from '~/components/global/icons/IconPlus.vue'
+import IconMinus from '~/components/global/icons/IconMinus.vue'
 @Component({
   components: { IconMinus, IconPlus },
 })

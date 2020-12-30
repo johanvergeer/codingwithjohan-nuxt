@@ -11,10 +11,11 @@
         </div>
       </div>
       <feature-image :article="article" class="mb-4" />
-      <article-series :current-article="article" />
+      <article-series :document="article" />
       <div class="markdown-body mb-8">
         <nuxt-content :document="article" />
       </div>
+      <article-series-prev-next :document="article" />
       <article-sources :article="article" />
     </div>
   </div>
@@ -24,6 +25,7 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import ArticleMeta from '~/components/blog/ArticleMeta.vue'
 import ArticleSeries from '~/components/blog/ArticleSeries.vue'
+import ArticleSeriesPrevNext from '~/components/blog/ArticleSeriesPrevNext.vue'
 import ArticlesList from '~/components/blog/ArticlesList.vue'
 import ArticleSources from '~/components/blog/ArticleSources.vue'
 import ArticleTags from '~/components/blog/ArticleTags.vue'
@@ -33,6 +35,7 @@ import { emptyArticle } from '~/utils/initialisers'
 
 @Component({
   components: {
+    ArticleSeriesPrevNext,
     ArticleSeries,
     ArticleMeta,
     ArticleTags,

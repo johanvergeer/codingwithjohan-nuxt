@@ -24,13 +24,17 @@ export interface IHasSeries {
   series?: string
 }
 
+export interface IHasTitle {
+  title: string
+}
+
 export interface IPartialArticle
   extends Record<string, any>,
     IHasFeatureImage,
     IHasTags,
     IHasSources,
-    IHasSeries {
-  title: string
+    IHasSeries,
+    IHasTitle {
   description: string
   body: string
   status?: 'draft' | 'published' | string

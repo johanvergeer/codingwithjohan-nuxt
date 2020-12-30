@@ -13,7 +13,7 @@
     <ul class="list-disc list-inside">
       <li v-for="article of articlesInSeries" :key="article.slug">
         <nuxt-link
-          v-if="article.slug !== currentArticle.slug"
+          v-if="article.slug !== document.slug"
           :to="`/blog/${article.slug}`"
           class="font-normal"
         >
@@ -26,28 +26,27 @@
 </template>
 
 <script lang="ts">
+import { IContentDocument } from '@nuxt/content/types/content'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import { IHasSeries } from '~/types/content'
+import { IHasSeries, IHasTitle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component
 export default class ArticleSeries extends Vue {
-  @Prop() private currentArticle?: IHasSeries
-  private articlesInSeries: IHasSeries[] = []
+  @Prop() private document?: IContentDocument & IHasSeries
+  private articlesInSeries: (IContentDocument & IHasTitle)[] = []
 
   async fetch() {
-    if (this.currentArticle?.series) {
-      this.articlesInSeries = (await this.$nuxt
-        .$content('blog')
-        .only(['slug', 'title'])
-        .where(
-          new WhereFilterBuilder(this.$nuxt)
-            .withSeries(this.currentArticle?.series)
-            .build()
-        )
-        .sortBy('createdAt', 'asc')
-        .fetch()) as IHasSeries[]
-    }
+    if (!this.document?.series) return
+
+    this.articlesInSeries = (await this.$nuxt
+      .$content('blog')
+      .only(['slug', 'title'])
+      .where(
+        new WhereFilterBuilder(this).withSeries(this.document?.series).build()
+      )
+      .sortBy('createdAt', 'asc')
+      .fetch()) as (IContentDocument & IHasTitle)[]
   }
 }
 </script>
