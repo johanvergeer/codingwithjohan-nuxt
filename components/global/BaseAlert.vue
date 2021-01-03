@@ -1,8 +1,9 @@
 <template>
-  <div class="alert border-l-4 p-4 mb-4" :class="`alert-${type}`">
+  <div class="alert border-l-4 p-4 mb-4 mt-4" :class="`alert-${type}`">
     <div class="flex">
       <div class="flex-shrink-0 self-start pt-1">
         <icon-info v-if="type === 'info'" class="alert-icon" />
+        <icon-note v-else-if="type === 'note'" class="alert-note" />
         <icon-next v-else-if="type === 'next'" class="alert-next" />
         <icon-star v-else-if="type === 'star'" class="alert-star" />
         <icon-alert v-else class="alert-icon" />
@@ -61,6 +62,23 @@ export default {
 
   .alert-info .dark-mode .alert-info {
     @apply bg-blue-900 border-blue-700;
+  }
+}
+
+/* Note Icon */
+.alert-note {
+  @apply bg-gray-200 border-gray-400
+
+  .alert-icon {
+    @apply text-gray-400;
+  }
+
+  .alert-content {
+    @apply text-gray-700;
+  }
+
+  .alert-info .dark-mode .alert-note {
+    @apply bg-gray-900 border-gray-700;
   }
 }
 
