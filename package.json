@@ -33,7 +33,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/tailwindcss": "^3.4.2",
     "clipboard": "^2.0.6",
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.2",
     "nuxt": "^2.14.6",
     "nuxt-property-decorator": "^2.8.8",
     "prism-themes": "^1.5.0",
