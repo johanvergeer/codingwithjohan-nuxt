@@ -1,4 +1,8 @@
-import { setDefaultAuthor } from './utils/hooks'
+import {
+  setDefaultAuthor,
+  warnWhenDescriptionOver200Chars,
+  warnWhenMissingDescription,
+} from './utils/hooks'
 
 const headingAnchor = {
   type: 'element',
@@ -85,6 +89,8 @@ export default {
     'content:file:beforeInsert': (document) => {
       if (document.extension === '.md') {
         setDefaultAuthor(document)
+        warnWhenDescriptionOver200Chars(document)
+        warnWhenMissingDescription(document)
       }
     },
   },

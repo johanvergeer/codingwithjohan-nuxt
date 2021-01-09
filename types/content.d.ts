@@ -37,6 +37,10 @@ export interface IHasAuthor {
   author?: IAuthor
 }
 
+export interface IHasDescription {
+  description?: string
+}
+
 export interface IPartialArticle
   extends Record<string, any>,
     IHasFeatureImage,
@@ -44,8 +48,8 @@ export interface IPartialArticle
     IHasSources,
     IHasSeries,
     IHasTitle,
-    IHasAuthor {
-  description: string
+    IHasAuthor,
+    IHasDescription {
   body: string
   status?: 'draft' | 'published' | string
 }
