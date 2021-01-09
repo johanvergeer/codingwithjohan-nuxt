@@ -38,7 +38,7 @@ export default class Index extends Vue {
     this.articles = (await this.$nuxt
       .$content('blog')
       .where(new WhereFilterBuilder(this.$nuxt).build())
-      .only(['title', 'slug', 'description', 'createdAt', 'body'])
+      .only(['title', 'slug', 'description', 'createdAt', 'body', 'author'])
       .sortBy('createdAt', 'desc')
       .fetch<IPartialArticle>()) as IArticle[]
   }

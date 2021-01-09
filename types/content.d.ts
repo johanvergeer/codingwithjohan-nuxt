@@ -8,6 +8,11 @@ interface ArticleSource {
   url: string
 }
 
+interface IAuthor {
+  name: string
+  email: string
+}
+
 export interface IHasFeatureImage {
   featureImage?: string
 }
@@ -28,13 +33,18 @@ export interface IHasTitle {
   title: string
 }
 
+export interface IHasAuthor {
+  author?: IAuthor
+}
+
 export interface IPartialArticle
   extends Record<string, any>,
     IHasFeatureImage,
     IHasTags,
     IHasSources,
     IHasSeries,
-    IHasTitle {
+    IHasTitle,
+    IHasAuthor {
   description: string
   body: string
   status?: 'draft' | 'published' | string

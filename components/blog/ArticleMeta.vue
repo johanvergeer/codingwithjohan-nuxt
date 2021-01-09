@@ -1,8 +1,9 @@
 <template>
-  <div class="text-copy-secondary mb-4 text-xl">
-    <span>{{ article.createdAt | formatDate }}</span>
-    <span> &middot; </span>
-    <reading-time :article="article" />
+  <div class="flex items-center text-copy-secondary mb-4 text-xl">
+    <gravatar-image class="rounded-full" :author="article.author" />
+    <span class="ml-2">{{ article.author.name }}</span>
+    <span class="middot-before">{{ article.createdAt | formatDate }}</span>
+    <reading-time class="middot-before" :article="article" />
   </div>
 </template>
 
@@ -15,3 +16,10 @@ export default class ArticleMeta extends Vue {
   @Prop() private article?: IArticle
 }
 </script>
+
+<style lang="scss">
+.middot-before::before {
+  content: '\b7';
+  padding: 0.3em;
+}
+</style>

@@ -1,3 +1,5 @@
+import { setDefaultAuthor } from './utils/hooks'
+
 const headingAnchor = {
   type: 'element',
   tagName: 'svg',
@@ -76,6 +78,16 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
+
+  // Hooks https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-hooks
+  // For Nuxt Content: https://content.nuxtjs.org/advanced#hooks
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        setDefaultAuthor(document)
+      }
+    },
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
