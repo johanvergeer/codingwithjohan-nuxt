@@ -23,6 +23,7 @@
 
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator'
+import urljoin from 'url-join'
 import CopyCodeBlock from '~/mixins/CopyCodeBlock.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
 import { emptyArticle } from '~/utils/initialisers'
@@ -40,14 +41,13 @@ export default class Slug extends mixins(CopyCodeBlock) {
   head() {
     return {
       title: this.article.title,
-      titleTemplate: '%s - NuxtJS',
+      titleTemplate: '%s - Coding with Johan',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content: this.article.description,
         },
-        // Open Graph
         { hid: 'og:title', property: 'og:title', content: this.article.title },
         {
           hid: 'og:description',
@@ -58,32 +58,99 @@ export default class Slug extends mixins(CopyCodeBlock) {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://nuxtjs.org/blog/${this.article.slug}`,
+          content: urljoin(this.$store.state.host, this.article.path),
         },
-        // { hid: 'og:image', property: 'og:image', content: this.socialImage },
-        // Twitter Card
         {
-          hid: 'twitter:title',
-          name: 'twitter:title',
+          hid: 'article:published_time',
+          name: 'article:published_time',
+          content: this.article.createdAt,
+        },
+        {
+          hid: 'article:modified_time',
+          name: 'article:modified_time',
+          content: this.article.updatedAt,
+        },
+        {
+          hid: 'article:author',
+          name: 'article:author',
+          content: this.article.author?.name,
+        },
+        ...this._tagsMeta,
+        ...this._twitterMeta,
+        ...this._imageMeta,
+      ],
+    }
+  }
+
+  get _twitterMeta() {
+    return [
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: this.article.title,
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: this.article.description,
+      },
+    ]
+  }
+
+  get _tagsMeta() {
+    return this.article.tags
+      ? this.article.tags.map((tag) => ({
+          name: 'article:tag',
+          content: tag,
+        }))
+      : []
+  }
+
+  get _imageMeta() {
+    if (this.article.featureImage) {
+      const imageUrl = urljoin(
+        this.$store.state.host,
+        this.article.featureImage
+      )
+
+      return [
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: imageUrl,
+        },
+        {
+          hid: 'og:image:secure_url',
+          name: 'og:image:secure_url',
+          content: imageUrl,
+        },
+        {
+          hid: 'og:image:type',
+          name: 'og:image:type',
+          content: 'image/png',
+        },
+        {
+          hid: 'og:image:alt',
+          name: 'og:image:alt',
           content: this.article.title,
         },
         {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.article.description,
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: imageUrl,
         },
-        // {
-        //   hid: 'twitter:image',
-        //   name: 'twitter:image',
-        //   content: this.socialImage,
-        // },
         {
-          hid: 'twitter:image:',
+          hid: 'twitter:image:alt',
           name: 'twitter:image:alt',
-          content: this.article.featureImage ? 'Blog post image' : 'NuxtJS',
+          content: this.article.title,
         },
-      ],
-    }
+      ]
+    } else return []
   }
 }
 </script>
