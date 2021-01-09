@@ -8,7 +8,7 @@ sources:
 ---
 
 The `cached_property` decorator can save a lot of computation time in return of some RAM memory.
-Can this decorator be used anywhere, or should it be used sparingly. Let's find out!
+Can this decorator be used anywhere, or should it be used sparingly? Let's find out!
 
 <!--more-->
 

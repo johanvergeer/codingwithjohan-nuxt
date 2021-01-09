@@ -4,7 +4,7 @@ category: Testing
 createdAt: 2021-01-01
 tags: ['Testing']
 series:
-status: draft
+status: published
 featureImage:
 sources:
   - title: TechBeacon - Should you test trivial code?
