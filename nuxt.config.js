@@ -112,6 +112,12 @@ export default {
     },
   },
 
+  env: {
+    CONTEXT: process.env.CONTEXT || 'development',
+    DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL || false,
+    URL: process.env.URL || false,
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 }
