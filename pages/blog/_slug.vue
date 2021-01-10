@@ -32,10 +32,14 @@ import { emptyArticle } from '~/utils/initialisers'
 export default class Slug extends mixins(CopyCodeBlock) {
   private article: IArticle = emptyArticle()
 
-  get featureImageUrl(): string | undefined {
+  get _featureImageUrl(): string | undefined {
     if (this.article.featureImage) {
       return urljoin(this.$store.state.host, this.article.featureImage)
     }
+  }
+
+  get _canonicalUrl(): string {
+    urljoin(this.$store.state.host, this.article.path)
   }
 
   async fetch() {
@@ -59,28 +63,19 @@ export default class Slug extends mixins(CopyCodeBlock) {
           name: 'author',
           content: this.article.author?.name,
         },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
         { hid: 'og:title', property: 'og:title', content: this.article.title },
         {
           hid: 'og:description',
           property: 'og:description',
           content: this.article.description,
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'og:url',
           property: 'og:url',
           content: urljoin(this.$store.state.host, this.article.path),
         },
-        {
-          hid: 'article:published_time',
-          name: 'article:published_time',
-          content: this.article.createdAt,
-        },
-        {
-          hid: 'article:modified_time',
-          name: 'article:modified_time',
-          content: this.article.updatedAt,
-        },
+        ...this._timesMeta,
         {
           hid: 'article:author',
           name: 'article:author',
@@ -93,15 +88,36 @@ export default class Slug extends mixins(CopyCodeBlock) {
       link: [
         {
           rel: 'canonical',
-          href: urljoin(this.$store.state.host, this.article.path),
+          href: this._canonicalUrl,
         },
         {
           rel: 'preload',
-          href: this.featureImageUrl,
+          href: this._featureImageUrl,
           as: 'image',
         },
       ],
+      script: [this._structuredData],
     }
+  }
+
+  get _timesMeta() {
+    const times = [
+      {
+        hid: 'article:published_time',
+        name: 'article:published_time',
+        content: this.article.createdAt,
+      },
+    ]
+
+    if (this.article.createdAt < this.article.updatedAt) {
+      times.push({
+        hid: 'article:modified_time',
+        name: 'article:modified_time',
+        content: this.article.updatedAt,
+      })
+    }
+
+    return times
   }
 
   get _twitterMeta() {
@@ -147,17 +163,17 @@ export default class Slug extends mixins(CopyCodeBlock) {
   }
 
   get _imageMeta() {
-    if (this.featureImageUrl) {
+    if (this._featureImageUrl) {
       return [
         {
           hid: 'og:image',
           name: 'og:image',
-          content: this.featureImageUrl,
+          content: this._featureImageUrl,
         },
         {
           hid: 'og:image:secure_url',
           name: 'og:image:secure_url',
-          content: this.featureImageUrl,
+          content: this._featureImageUrl,
         },
         {
           hid: 'og:image:type',
@@ -172,7 +188,7 @@ export default class Slug extends mixins(CopyCodeBlock) {
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: this.featureImageUrl,
+          content: this._featureImageUrl,
         },
         {
           hid: 'twitter:image:alt',
@@ -181,6 +197,52 @@ export default class Slug extends mixins(CopyCodeBlock) {
         },
       ]
     } else return []
+  }
+
+  get _structuredData() {
+    const data = {
+      type: 'application/ld+json',
+      json: {
+        '@context': 'http://schema.org',
+        '@type': 'Article',
+        headline: this.article.title,
+
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': this._canonicalUrl,
+        },
+        datePublished: this.article.createdAt,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Coding with Johan',
+          logo: {
+            '@type': 'ImageObject',
+            url: urljoin(
+              this.$store.state.host,
+              '_nuxt/assets/img/logo-100.png'
+            ),
+          },
+        },
+        author: {
+          '@type': 'Person',
+          name: this.article.author?.name,
+        },
+        description: this.article.description,
+      },
+    }
+
+    if (this._featureImageUrl) {
+      data.json.image = {
+        '@type': 'ImageObject',
+        url: this._featureImageUrl,
+      }
+    }
+
+    if (this.article.createdAt < this.article.updatedAt) {
+      data.json.dateModified = this.article.updatedAt
+    }
+
+    return data
   }
 }
 </script>
