@@ -129,7 +129,7 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.URL ? process.env.url : 'http://localhost:3000',
+    hostname: process.env.URL ? process.env.URL : 'http://localhost:3000',
     gzip: true,
     routes: createSitemapRoutes,
   },
