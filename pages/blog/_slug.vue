@@ -32,6 +32,12 @@ import { emptyArticle } from '~/utils/initialisers'
 export default class Slug extends mixins(CopyCodeBlock) {
   private article: IArticle = emptyArticle()
 
+  get featureImageUrl(): string | undefined {
+    if (this.article.featureImage) {
+      return urljoin(this.$store.state.host, this.article.featureImage)
+    }
+  }
+
   async fetch() {
     this.article = (await this.$nuxt
       .$content('blog', this.$route.params.slug)
@@ -47,6 +53,11 @@ export default class Slug extends mixins(CopyCodeBlock) {
           hid: 'description',
           name: 'description',
           content: this.article.description,
+        },
+        {
+          hid: 'author',
+          name: 'author',
+          content: this.article.author?.name,
         },
         { hid: 'og:title', property: 'og:title', content: this.article.title },
         {
@@ -79,23 +90,47 @@ export default class Slug extends mixins(CopyCodeBlock) {
         ...this._twitterMeta,
         ...this._imageMeta,
       ],
+      link: [
+        {
+          rel: 'canonical',
+          href: urljoin(this.$store.state.host, this.article.path),
+        },
+        {
+          rel: 'preload',
+          href: this.featureImageUrl,
+          as: 'image',
+        },
+      ],
     }
   }
 
   get _twitterMeta() {
     return [
       {
-        hid: 'twitter:card',
         name: 'twitter:card',
-        content: 'summary',
+        content: 'summary_large_image',
       },
       {
-        hid: 'twitter:title',
+        name: 'twitter:site',
+        content: '@johan_vergeer',
+      },
+      {
+        name: 'twitter:creator',
+        content: '@johan_vergeer',
+      },
+      {
+        name: 'twitter:label1',
+        content: 'Reading time',
+      },
+      {
+        name: 'twitter:data1',
+        content: `${this.article.readingTime} min read`,
+      },
+      {
         name: 'twitter:title',
         content: this.article.title,
       },
       {
-        hid: 'twitter:description',
         name: 'twitter:description',
         content: this.article.description,
       },
@@ -112,22 +147,17 @@ export default class Slug extends mixins(CopyCodeBlock) {
   }
 
   get _imageMeta() {
-    if (this.article.featureImage) {
-      const imageUrl = urljoin(
-        this.$store.state.host,
-        this.article.featureImage
-      )
-
+    if (this.featureImageUrl) {
       return [
         {
           hid: 'og:image',
           name: 'og:image',
-          content: imageUrl,
+          content: this.featureImageUrl,
         },
         {
           hid: 'og:image:secure_url',
           name: 'og:image:secure_url',
-          content: imageUrl,
+          content: this.featureImageUrl,
         },
         {
           hid: 'og:image:type',
@@ -142,7 +172,7 @@ export default class Slug extends mixins(CopyCodeBlock) {
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: imageUrl,
+          content: this.featureImageUrl,
         },
         {
           hid: 'twitter:image:alt',
