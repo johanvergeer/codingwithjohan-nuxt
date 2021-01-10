@@ -17,12 +17,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ArticlesList from '~/components/blog/ArticlesList.vue'
 import { IArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
-@Component({
-  components: { ArticlesList },
-})
+
+@Component
 export default class Tag extends Vue {
   private articles: IArticle[] = []
 
@@ -34,7 +32,7 @@ export default class Tag extends Vue {
           .withTagsContaining(this.$route.params.tag)
           .build()
       )
-      .only(['title', 'slug', 'description', 'createdAt', 'body'])
+      .only(['title', 'slug', 'description', 'createdAt', 'body', 'author'])
       .sortBy('createdAt', 'asc')
       .fetch()) as IArticle[]
 

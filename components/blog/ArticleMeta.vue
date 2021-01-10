@@ -13,7 +13,7 @@ import { IArticle } from '~/types/content'
 
 @Component
 export default class ArticleMeta extends Vue {
-  @Prop() private article?: IArticle
+  @Prop() private article!: IArticle
 }
 </script>
 

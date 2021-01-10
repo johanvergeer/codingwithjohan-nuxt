@@ -18,11 +18,11 @@ export interface IHasFeatureImage {
 }
 
 export interface IHasTags {
-  tags?: string[]
+  tags: string[]
 }
 
 export interface IHasSources {
-  sources?: ArticleSource[]
+  sources: ArticleSource[]
 }
 
 export interface IHasSeries {
@@ -34,18 +34,18 @@ export interface IHasTitle {
 }
 
 export interface IHasAuthor {
-  author?: IAuthor
+  author: IAuthor
 }
 
 export interface IHasDescription {
-  description?: string
+  description: string
 }
 
 export interface IHasReadingTime {
   /**
    * estimated time in minutes it takes to read the content.
    */
-  readingTime?: number
+  readingTime: number
 }
 
 export interface IPartialArticle
@@ -59,7 +59,7 @@ export interface IPartialArticle
     IHasDescription,
     IHasReadingTime {
   body: string
-  status?: 'draft' | 'published' | string
+  status: 'draft' | 'published'
 }
 
 export type IArticle = IContentDocument & IPartialArticle

@@ -37,6 +37,6 @@ import { IArticle } from '~/types/content'
 
 @Component
 export default class ArticlesList extends Vue {
-  @Prop() private articles?: IArticle[]
+  @Prop() private articles!: IArticle[]
 }
 </script>

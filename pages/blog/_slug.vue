@@ -1,8 +1,6 @@
 <template>
   <div class="container-inner mx-auto my-16">
-    <p v-if="$fetchState.pending">Loading article...</p>
-    <p v-else-if="$fetchState.error">Error while loading the article!</p>
-    <div v-else>
+    <div>
       <h1 class="text-8xl font-bold leading-tight">{{ article.title }}</h1>
       <div class="flex justify-between mt-5">
         <article-meta :article="article" />
@@ -26,27 +24,20 @@ import { Component, mixins } from 'nuxt-property-decorator'
 import urljoin from 'url-join'
 import CopyCodeBlock from '~/mixins/CopyCodeBlock.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
-import { emptyArticle } from '~/utils/initialisers'
+import { IStructuredDataArticle } from '~/types/structureddata'
 
-@Component
+@Component({
+  async asyncData({ $content, params }) {
+    const article = (await $content(
+      'blog',
+      params.slug
+    ).fetch<IPartialArticle>()) as IArticle
+
+    return { article }
+  },
+})
 export default class Slug extends mixins(CopyCodeBlock) {
-  private article: IArticle = emptyArticle()
-
-  get _featureImageUrl(): string | undefined {
-    if (this.article.featureImage) {
-      return urljoin(this.$store.state.host, this.article.featureImage)
-    }
-  }
-
-  get _canonicalUrl(): string {
-    urljoin(this.$store.state.host, this.article.path)
-  }
-
-  async fetch() {
-    this.article = (await this.$nuxt
-      .$content('blog', this.$route.params.slug)
-      .fetch<IPartialArticle>()) as IArticle
-  }
+  private article!: IArticle
 
   head() {
     return {
@@ -118,6 +109,16 @@ export default class Slug extends mixins(CopyCodeBlock) {
     }
 
     return times
+  }
+
+  get _featureImageUrl(): string | undefined {
+    if (this.article.featureImage) {
+      return urljoin(this.$store.state.host, this.article.featureImage)
+    }
+  }
+
+  get _canonicalUrl(): string {
+    return urljoin(this.$store.state.host, this.article.path)
   }
 
   get _twitterMeta() {
@@ -200,49 +201,46 @@ export default class Slug extends mixins(CopyCodeBlock) {
   }
 
   get _structuredData() {
-    const data = {
-      type: 'application/ld+json',
-      json: {
-        '@context': 'http://schema.org',
-        '@type': 'Article',
-        headline: this.article.title,
+    const data: IStructuredDataArticle = {
+      '@context': 'http://schema.org',
+      '@type': 'Article',
+      headline: this.article.title,
 
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': this._canonicalUrl,
-        },
-        datePublished: this.article.createdAt,
-        publisher: {
-          '@type': 'Organization',
-          name: 'Coding with Johan',
-          logo: {
-            '@type': 'ImageObject',
-            url: urljoin(
-              this.$store.state.host,
-              '_nuxt/assets/img/logo-100.png'
-            ),
-          },
-        },
-        author: {
-          '@type': 'Person',
-          name: this.article.author?.name,
-        },
-        description: this.article.description,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': this._canonicalUrl,
       },
+      datePublished: this.article.createdAt,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Coding with Johan',
+        logo: {
+          '@type': 'ImageObject',
+          url: urljoin(this.$store.state.host, '_nuxt/assets/img/logo-100.png'),
+        },
+      },
+      author: {
+        '@type': 'Person',
+        name: this.article.author.name,
+      },
+      description: this.article.description ?? '',
     }
 
     if (this._featureImageUrl) {
-      data.json.image = {
+      data.image = {
         '@type': 'ImageObject',
         url: this._featureImageUrl,
       }
     }
 
     if (this.article.createdAt < this.article.updatedAt) {
-      data.json.dateModified = this.article.updatedAt
+      data.dateModified = this.article.updatedAt
     }
 
-    return data
+    return {
+      type: 'application/ld+json',
+      json: data,
+    }
   }
 }
 </script>
