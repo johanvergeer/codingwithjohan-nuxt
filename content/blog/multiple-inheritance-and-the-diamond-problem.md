@@ -2,6 +2,7 @@
 title: 'Multiple Inheritance and the Diamond Problem'
 category: 'Python'
 createdAt: 2020-01-17
+updatedAt: 2020-01-18
 tags: ['Python']
 series:
 status: published

@@ -2,6 +2,7 @@
 title: 'SOLID Python part 2: Single Responsibility Principle'
 category: 'Python'
 createdAt: 2020-01-15
+updatedAt: 2020-01-15
 tags: ['SOLID', 'Python', 'SRP', 'Single Responsibility principle']
 series: solid-python
 status: published

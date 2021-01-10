@@ -2,6 +2,7 @@
 title: 'SOLID Python part 6: Dependency Inversion Principle'
 category: 'Python'
 createdAt: 2020-01-24
+updatedAt: 2020-01-24
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation principle']
 series: solid-python
 status: published

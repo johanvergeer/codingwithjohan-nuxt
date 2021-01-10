@@ -2,6 +2,7 @@
 title: 'How to save computation time with functools.cached_property?'
 category: 'Python'
 createdAt: 2020-07-05
+updatedAt: 2020-07-05
 tags: ['Python', 'functools', 'performance']
 series:
 status: published

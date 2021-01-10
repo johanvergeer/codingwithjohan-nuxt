@@ -2,6 +2,7 @@
 title: 'SOLID Python part 1: Introduction'
 category: Python
 createdAt: 2020-01-14
+updatedAt: 2020-01-14
 tags: ['SOLID', 'Python']
 series: solid-python
 status: published

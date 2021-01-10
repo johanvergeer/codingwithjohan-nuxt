@@ -2,6 +2,7 @@
 title: 'Python Dependency Injection Frameworks'
 category: 'Python'
 createdAt: 2020-01-26
+updatedAt: 2020-01-26
 tags: ['Python', 'Dependency Injection']
 series:
 status: published

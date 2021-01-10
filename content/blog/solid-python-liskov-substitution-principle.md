@@ -2,6 +2,7 @@
 title: 'SOLID Python part 4: Liskov Substitution Principle'
 category: 'Python'
 createdAt: 2020-01-17
+updatedAt: 2020-01-17
 tags: ['SOLID', 'Python', 'LSP', 'Liskov Substitution Principle']
 series: solid-python
 status: published

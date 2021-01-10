@@ -2,6 +2,7 @@
 title: 'SOLID Python part 5: Interface Segregation Principle'
 category: 'Python'
 createdAt: 2020-01-18
+updatedAt: 2020-01-18
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation Principle']
 series: solid-python
 status: published

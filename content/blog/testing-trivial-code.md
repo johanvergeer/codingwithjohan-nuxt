@@ -2,6 +2,7 @@
 title: 'Should trivial code be tested?'
 category: 'Testing'
 createdAt: 2021-01-01
+updatedAt: 2021-01-01
 tags: ['Testing']
 series:
 status: published
