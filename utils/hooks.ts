@@ -1,13 +1,26 @@
 import consola from 'consola'
-import { IArticle, IHasDescription, IHasTitle } from '~/types/content'
+import {
+  IArticle,
+  IHasAuthor,
+  IHasDescription,
+  IHasTitle,
+} from '~/types/content'
 
-export function setDefaultAuthor(document: IArticle) {
+export function setDefaultAuthor(document: IHasAuthor) {
   if (!document.author) {
     document.author = {
       name: 'Johan Vergeer',
       email: 'johanvergeer@gmail.com',
     }
   }
+}
+
+export function setReadingTime(document: IArticle) {
+  const contentString = JSON.stringify(document.body)
+  const words = contentString.split(' ').length
+  const wordsPerMinute = 200
+
+  document.readingTime = Math.ceil(words / wordsPerMinute)
 }
 
 /**

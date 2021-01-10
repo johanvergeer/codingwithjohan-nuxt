@@ -1,5 +1,6 @@
 import {
   setDefaultAuthor,
+  setReadingTime,
   warnWhenDescriptionOver200Chars,
   warnWhenMissingDescription,
 } from './utils/hooks'
@@ -81,6 +82,7 @@ export default {
     'content:file:beforeInsert': (document) => {
       if (document.extension === '.md') {
         setDefaultAuthor(document)
+        setReadingTime(document)
         warnWhenDescriptionOver200Chars(document)
         warnWhenMissingDescription(document)
       }

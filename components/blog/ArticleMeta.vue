@@ -3,7 +3,7 @@
     <gravatar-image class="rounded-full" :author="article.author" />
     <span class="ml-2">{{ article.author.name }}</span>
     <span class="middot-before">{{ article.createdAt | formatDate }}</span>
-    <reading-time class="middot-before" :article="article" />
+    <span class="middot-before">{{ article.readingTime }} min read</span>
   </div>
 </template>
 

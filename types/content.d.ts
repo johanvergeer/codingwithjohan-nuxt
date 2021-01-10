@@ -41,6 +41,13 @@ export interface IHasDescription {
   description?: string
 }
 
+export interface IHasReadingTime {
+  /**
+   * estimated time in minutes it takes to read the content.
+   */
+  readingTime?: number
+}
+
 export interface IPartialArticle
   extends Record<string, any>,
     IHasFeatureImage,
@@ -49,7 +56,8 @@ export interface IPartialArticle
     IHasSeries,
     IHasTitle,
     IHasAuthor,
-    IHasDescription {
+    IHasDescription,
+    IHasReadingTime {
   body: string
   status?: 'draft' | 'published' | string
 }
