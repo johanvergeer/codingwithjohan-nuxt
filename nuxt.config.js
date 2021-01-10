@@ -29,6 +29,19 @@ const headingAnchor = {
   ],
 }
 
+const createSitemapRoutes = async () => {
+  const { $content } = require('@nuxt/content')
+
+  const posts = await $content('blog').fetch()
+  const routes = []
+
+  for (const post of posts) {
+    routes.push(`blog/${post.slug}`)
+  }
+
+  return routes
+}
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -74,6 +87,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/sitemap',
   ],
 
   // Hooks https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-hooks
@@ -112,6 +126,12 @@ export default {
         theme: 'prism-themes/themes/prism-material-oceanic.css',
       },
     },
+  },
+
+  sitemap: {
+    hostname: process.env.URL ? process.env.url : 'http://localhost:3000',
+    gzip: true,
+    routes: createSitemapRoutes,
   },
 
   env: {
