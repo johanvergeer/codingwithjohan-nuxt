@@ -1,9 +1,11 @@
 ---
 title: 'SOLID Python part 5: Interface Segregation Principle'
-category: Python
+category: 'Python'
 createdAt: 2020-01-18
 tags: ['SOLID', 'Python', 'ISP', 'Interface Segregation Principle']
 series: solid-python
+status: published
+featureImage:
 sources:
   - title: Interface Segregation Principle (Hackernoon)
     url: https://hackernoon.com/interface-segregation-principle-bdf3f94f1d11

@@ -1,6 +1,6 @@
 ---
 title: 'Should trivial code be tested?'
-category: Testing
+category: 'Testing'
 createdAt: 2021-01-01
 tags: ['Testing']
 series:

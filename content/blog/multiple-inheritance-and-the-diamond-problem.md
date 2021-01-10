@@ -1,10 +1,11 @@
 ---
-title: Multiple Inheritance and the Diamond Problem
-category: Python
-createdAt: 2020-01-17T16:56:43.451Z
+title: 'Multiple Inheritance and the Diamond Problem'
+category: 'Python'
+createdAt: 2020-01-17
+tags: ['Python']
+series:
+status: published
 featureImage: /blog/multiple-inheritance-and-the-diamond-problem/feature-image.png
-tags:
-  - Python
 sources:
   - title: Diamond inheritance on Wikipedia
     url: https://en.wikipedia.org/wiki/Multiple_inheritance#/media/File:Diamond_inheritance.svg

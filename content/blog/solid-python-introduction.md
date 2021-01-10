@@ -5,6 +5,7 @@ createdAt: 2020-01-14
 tags: ['SOLID', 'Python']
 series: solid-python
 status: published
+featureImage:
 sources:
   - title: Medium - Solid Design Principles
     url: https://medium.com/@trionamoynihan/solid-design-principles-eec367b2b8
