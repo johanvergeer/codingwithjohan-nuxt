@@ -46,7 +46,7 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
-  ssr: false,
+  ssr: true,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -132,6 +132,7 @@ export default {
     hostname: process.env.URL ? process.env.URL : 'http://localhost:3000',
     gzip: true,
     routes: createSitemapRoutes,
+    exclude: ['/404'],
   },
 
   env: {
