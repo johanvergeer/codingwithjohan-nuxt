@@ -24,7 +24,7 @@ import { Component, mixins } from 'nuxt-property-decorator'
 import urljoin from 'url-join'
 import CopyCodeBlock from '~/mixins/CopyCodeBlock.vue'
 import { IArticle, IPartialArticle } from '~/types/content'
-import { IStructuredDataArticle } from '~/types/structureddata'
+import { ILink, IStructuredDataArticle } from '~/types/head'
 
 @Component({
   async asyncData({ $content, params }) {
@@ -82,7 +82,7 @@ export default class Slug extends mixins(CopyCodeBlock) {
   }
 
   get _link() {
-    const link = [
+    const link: ILink[] = [
       {
         rel: 'canonical',
         href: this._canonicalUrl,

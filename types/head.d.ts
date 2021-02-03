@@ -1,3 +1,7 @@
+/**
+ * Types used for elements in the <head></head> tag
+ */
+
 interface IMainEntityOfPage {
   '@type': 'WebPage'
   '@id': string
@@ -38,4 +42,10 @@ export interface IStructuredDataArticle {
   description: string
   image?: IImage
   dateModified?: Date
+}
+
+export interface ILink {
+  rel: 'canonical' | 'preload'
+  href: string
+  as?: string
 }
