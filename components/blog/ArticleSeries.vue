@@ -23,6 +23,7 @@
       </li>
     </ul>
   </div>
+  <div v-else><!-- No series --></div>
 </template>
 
 <script lang="ts">
