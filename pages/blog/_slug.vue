@@ -76,19 +76,28 @@ export default class Slug extends mixins(CopyCodeBlock) {
         ...this._twitterMeta,
         ...this._imageMeta,
       ],
-      link: [
-        {
-          rel: 'canonical',
-          href: this._canonicalUrl,
-        },
-        {
-          rel: 'preload',
-          href: this._featureImageUrl,
-          as: 'image',
-        },
-      ],
+      link: this._link,
       script: [this._structuredData],
     }
+  }
+
+  get _link() {
+    const link = [
+      {
+        rel: 'canonical',
+        href: this._canonicalUrl,
+      },
+    ]
+
+    if (this._featureImageUrl) {
+      link.push({
+        rel: 'preload',
+        href: this._featureImageUrl,
+        as: 'image',
+      })
+    }
+
+    return link
   }
 
   get _timesMeta() {
