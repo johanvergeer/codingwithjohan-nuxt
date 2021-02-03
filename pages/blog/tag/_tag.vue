@@ -36,7 +36,12 @@ export default class Tag extends Vue {
       .sortBy('createdAt', 'asc')
       .fetch()) as IArticle[]
 
-    if (this.articles.length < 1) return this.$nuxt.context.redirect('/404')
+    // Only for client-side rendering
+    if (this.articles.length < 1)
+      return this.$nuxt.error({
+        statusCode: 404,
+        message: `No tag named "${this.$route.params.tag}" found`,
+      })
   }
 }
 </script>
