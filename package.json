@@ -38,7 +38,7 @@
     "consola": "^2.15.3",
     "core-js": "^3.9.1",
     "md5": "^2.3.0",
-    "nuxt": "^2.15.2",
+    "nuxt": "^2.15.5",
     "nuxt-property-decorator": "^2.9.1",
     "prism-themes": "^1.5.0",
     "typescript": "^4.2.2",
