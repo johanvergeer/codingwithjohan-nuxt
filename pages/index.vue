@@ -18,9 +18,7 @@
 
     <div class="container-inner mx-auto py-16 border-gray-300 border-t mb-12">
       <h1 class="font-bold">Latest Posts:</h1>
-      <p v-if="$fetchState.pending">Loading articles...</p>
-      <p v-else-if="$fetchState.error">Error while loading articles!</p>
-      <articles-list v-else :articles="articles" />
+      <articles-list :articles="articles" />
     </div>
   </div>
 </template>
@@ -30,14 +28,10 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { IArticle, IPartialArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
-@Component
-export default class Index extends Vue {
-  private articles: IArticle[] = []
-
-  async fetch() {
-    this.articles = (await this.$nuxt
-      .$content('blog')
-      .where(new WhereFilterBuilder(this.$nuxt).build())
+@Component({
+  async asyncData({ $content, isDev }) {
+    const articles = (await $content('blog')
+      .where(new WhereFilterBuilder(isDev).build())
       .only([
         'title',
         'slug',
@@ -48,6 +42,11 @@ export default class Index extends Vue {
       ])
       .sortBy('createdAt', 'desc')
       .fetch<IPartialArticle>()) as IArticle[]
-  }
+
+    return { articles }
+  },
+})
+export default class Index extends Vue {
+  private articles!: IArticle[]
 }
 </script>
