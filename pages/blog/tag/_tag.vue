@@ -28,7 +28,7 @@ export default class Tag extends Vue {
     this.articles = (await this.$nuxt
       .$content('blog')
       .where(
-        new WhereFilterBuilder(this)
+        new WhereFilterBuilder(this.$nuxt.context.isDev)
           .withTagsContaining(this.$route.params.tag)
           .build()
       )

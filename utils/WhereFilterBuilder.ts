@@ -16,10 +16,10 @@ interface WhereFilter {
  */
 export default class WhereFilterBuilder {
   private whereStatement: WhereFilter = {}
-  private readonly vue: Vue
+  private readonly isDev: boolean
 
-  constructor(vue: Vue, excludeDraftsInProductionMode: boolean = true) {
-    this.vue = vue
+  constructor(isDev: boolean, excludeDraftsInProductionMode: boolean = true) {
+    this.isDev = isDev
 
     if (excludeDraftsInProductionMode) {
       this._withStatusNotDraftIfInProductionMode()
@@ -30,7 +30,7 @@ export default class WhereFilterBuilder {
    * posts with status draft should only be displayed when running in dev mode
    */
   _withStatusNotDraftIfInProductionMode(): void {
-    if (!this.vue.$nuxt.context.isDev) {
+    if (!this.isDev) {
       this.whereStatement.status = { $ne: 'draft' }
     }
   }

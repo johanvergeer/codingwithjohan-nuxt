@@ -44,7 +44,9 @@ export default class ArticleSeries extends Vue {
       .$content('blog')
       .only(['slug', 'title'])
       .where(
-        new WhereFilterBuilder(this).withSeries(this.document?.series).build()
+        new WhereFilterBuilder(this.$nuxt.context.isDev)
+          .withSeries(this.document?.series)
+          .build()
       )
       .sortBy('createdAt', 'asc')
       .fetch()) as (IContentDocument & IHasTitle)[]
