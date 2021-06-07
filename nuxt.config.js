@@ -71,7 +71,15 @@ export default {
   plugins: ['~/plugins/formatDate.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/header',
+      '~/components/footer',
+      '~/components/blog',
+      '~/components/molecules',
+    ],
+  },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
