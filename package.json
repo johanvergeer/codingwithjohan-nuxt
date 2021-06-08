@@ -30,7 +30,7 @@
     "core-js": "^3.9.1",
     "md5": "^2.3.0",
     "nuxt": "^2.15.6",
-    "prism-themes": "^1.5.0",
+    "prism-themes": "^1.7.0",
     "url-join": "^4.0.1"
   },
   "devDependencies": {
