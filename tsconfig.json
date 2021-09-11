@@ -20,7 +20,8 @@
       "@nuxt/types",
       "@nuxtjs/moment",
       "@nuxt/content",
-      "@types/md5"
+      "@types/md5",
+      "@types/jest"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

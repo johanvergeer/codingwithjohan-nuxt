@@ -6,11 +6,12 @@
       <div>
         <nuxt-link to="/">
           <img
+            id="logo"
             src="~assets/img/logo-100.png"
             class="inline w-24"
             alt="Coding with Johan logo"
           />
-          <p class="inline text-copy-primary text-4xl ml-4">
+          <p id="site-header" class="inline text-copy-primary text-4xl ml-4">
             Coding with Johan
           </p>
         </nuxt-link>
