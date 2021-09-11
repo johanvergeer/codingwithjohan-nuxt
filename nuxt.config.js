@@ -64,6 +64,7 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
     script: [quantcast],
+    __dangerouslyDisableSanitizers: ['script'],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
