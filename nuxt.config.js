@@ -4,6 +4,7 @@ import {
   warnWhenDescriptionOver200Chars,
   warnWhenMissingDescription,
 } from './utils/hooks'
+import quantcast from './utils/quantcast'
 
 const headingAnchor = {
   type: 'element',
@@ -62,6 +63,7 @@ export default {
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+    script: [quantcast],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
