@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 import {
   setDefaultAuthor,
   setReadingTime,
@@ -48,6 +50,22 @@ export default {
   target: 'static',
 
   ssr: true,
+
+  server:
+    process.env.NODE_ENV !== 'production'
+      ? {
+          // SSL Certificate and key for local development
+          // See README.md on how to create the certificate and key
+          https: {
+            key: fs.readFileSync(
+              path.resolve(__dirname, 'ssl', 'localhost-key.pem')
+            ),
+            cert: fs.readFileSync(
+              path.resolve(__dirname, 'ssl', 'localhost.pem')
+            ),
+          },
+        }
+      : {},
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {

@@ -1,5 +1,27 @@
 # Coding with Johan
 
+## Development Setup
+
+### SSL certificates
+
+SSL certificates can be created with [mkcert](https://github.com/FiloSottile/mkcert).
+
+1. Follow the installation instructions on their GitHub repo (if this is not done yet)
+1. Create a new local CA (if this is not done yet)
+   ```shell
+   mkcert -install
+   ```
+1. Create the folder to store the certificate and key
+   ```shell
+   cd <coding with johan root dir>
+   mkdir ssl
+   cd ssl
+   ```
+1. Generate the certificate and key
+   ```shell
+   mkcert localhost
+   ```
+
 ## Build Setup
 
 ```bash
