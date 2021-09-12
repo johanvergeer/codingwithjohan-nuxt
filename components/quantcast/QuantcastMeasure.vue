@@ -1,16 +1,6 @@
-<template>
-  <noscript>
-    <div style="display: none">
-      <img
-        class="quantserve-img"
-        src="//pixel.quantserve.com/pixel/p-2KXG7Uf16fG9h.gif"
-        alt="Quantcast"
-      />
-    </div>
-  </noscript>
-</template>
+<template><div></div></template>
 
-<script lang="js">
+<script>
 export default {
   mounted() {
     window._qevents = window._qevents || []
@@ -27,7 +17,7 @@ export default {
       qacct: 'p-2KXG7Uf16fG9h',
       uid: 'johan@whitegyro.com',
     })
-  }
+  },
 }
 </script>
 
