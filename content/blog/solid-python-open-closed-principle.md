@@ -5,7 +5,7 @@ createdAt: 2020-01-16
 updatedAt: 2020-01-16
 tags: ['SOLID', 'Python', 'OCP', 'Open-Closed Principle']
 series: solid-python
-status: draft
+status: published
 featureImage:
 sources:
 ---
