@@ -6,7 +6,6 @@ import {
   warnWhenDescriptionOver200Chars,
   warnWhenMissingDescription,
 } from './utils/hooks'
-import quantcast from './utils/quantcast'
 
 const headingAnchor = {
   type: 'element',
@@ -80,7 +79,6 @@ export default {
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
-    script: [quantcast],
     __dangerouslyDisableSanitizers: ['script'],
   },
 
@@ -88,7 +86,7 @@ export default {
   css: ['~/assets/css/github-markdown.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/formatDate.ts'],
+  plugins: ['~/plugins/formatDate.ts', '~/plugins/gtag.ts'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: {
