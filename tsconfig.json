@@ -18,7 +18,6 @@
     "types": [
       "@types/node",
       "@nuxt/types",
-      "@nuxtjs/moment",
       "@nuxt/content",
       "@types/md5",
       "@types/jest"
