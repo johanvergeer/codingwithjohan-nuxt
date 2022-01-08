@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { IArticle, IPartialArticle } from '~/types/content'
+import { IArticle } from '~/types/content'
 import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
 
 @Component({
@@ -41,7 +41,7 @@ import WhereFilterBuilder from '~/utils/WhereFilterBuilder'
         'readingTime',
       ])
       .sortBy('createdAt', 'desc')
-      .fetch<IPartialArticle>()) as IArticle[]
+      .fetch<IArticle>()) as IArticle[]
 
     return { articles }
   },

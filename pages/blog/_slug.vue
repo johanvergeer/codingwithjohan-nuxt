@@ -23,7 +23,7 @@
 import { Component, mixins } from 'nuxt-property-decorator'
 import urljoin from 'url-join'
 import CopyCodeBlock from '~/mixins/CopyCodeBlock.vue'
-import { IArticle, IPartialArticle } from '~/types/content'
+import { IArticle } from '~/types/content'
 import { ILink, IStructuredDataArticle } from '~/types/head'
 
 @Component({
@@ -31,7 +31,7 @@ import { ILink, IStructuredDataArticle } from '~/types/head'
     const article = (await $content(
       'blog',
       params.slug
-    ).fetch<IPartialArticle>()) as IArticle
+    ).fetch<IArticle>()) as IArticle
 
     return { article }
   },

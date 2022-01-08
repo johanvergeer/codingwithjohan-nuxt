@@ -34,7 +34,7 @@ export default class Tag extends Vue {
       )
       .only(['title', 'slug', 'description', 'createdAt', 'body', 'author'])
       .sortBy('createdAt', 'asc')
-      .fetch()) as IArticle[]
+      .fetch<IArticle>()) as IArticle[]
 
     // Only for client-side rendering
     if (this.articles.length < 1)

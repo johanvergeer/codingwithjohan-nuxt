@@ -49,7 +49,8 @@ export default class ArticleSeries extends Vue {
           .build()
       )
       .sortBy('createdAt', 'asc')
-      .fetch()) as (IContentDocument & IHasTitle)[]
+      .fetch<IContentDocument & IHasTitle>()) as (IContentDocument &
+      IHasTitle)[]
   }
 }
 </script>
